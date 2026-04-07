@@ -1,0 +1,76 @@
+---
+const navItems = [
+  { label: 'トップ', href: '/' },
+  { label: '三多摩支部とは', href: '/about/' },
+  { label: '経営者の気づきとまなび', href: '/posts/' },
+  { label: '経営者支援サービス', href: '/our-services/' },
+  { label: 'イベント', href: '/event/' },
+  { label: '会員企業一覧', href: '/list/' },
+  { label: '東京同友会', href: '/tokyo-doyu/' },
+];
+---
+
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <!-- Top bar -->
+    <div class="flex items-center justify-between py-3 border-b border-border">
+      <a href="/" class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm">同</div>
+        <div>
+          <p class="text-xs text-text-light">東京中小企業家同友会</p>
+          <p class="text-lg font-bold text-text">三多摩支部</p>
+        </div>
+      </a>
+      <div class="hidden md:flex items-center gap-3">
+        <a href="/event/" class="inline-flex items-center px-4 py-2 bg-primary text-white text-sm font-bold rounded hover:bg-primary-dark transition-colors">
+          例会お試し参加
+        </a>
+        <a href="/contact/" class="inline-flex items-center px-4 py-2 border-2 border-primary text-primary text-sm font-bold rounded hover:bg-primary hover:text-white transition-colors">
+          お問い合わせ・入会案内
+        </a>
+      </div>
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="md:hidden p-2" aria-label="メニューを開く">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <!-- Navigation -->
+    <nav id="main-nav" class="hidden md:block">
+      <ul class="flex items-center justify-center gap-1">
+        {navItems.map(item => (
+          <li>
+            <a href={item.href} class="block px-4 py-3 text-sm font-medium text-text hover:text-primary transition-colors">
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <!-- Mobile navigation -->
+    <nav id="mobile-nav" class="hidden md:hidden pb-4">
+      <ul class="space-y-1">
+        {navItems.map(item => (
+          <li>
+            <a href={item.href} class="block px-4 py-2 text-sm text-text hover:bg-primary-light rounded">
+              {item.label}
+            </a>
+          </li>
+        ))}
+        <li class="pt-2 space-y-2">
+          <a href="/event/" class="block text-center px-4 py-2 bg-primary text-white text-sm font-bold rounded">例会お試し参加</a>
+          <a href="/contact/" class="block text-center px-4 py-2 border-2 border-primary text-primary text-sm font-bold rounded">お問い合わせ・入会案内</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const nav = document.getElementById('mobile-nav');
+  btn?.addEventListener('click', () => {
+    nav?.classList.toggle('hidden');
+  });
+</script>

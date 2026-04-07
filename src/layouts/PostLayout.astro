@@ -1,0 +1,63 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ShareButtons from '../components/ShareButtons.astro';
+import { getCategoryLabel } from '../lib/mockData';
+
+interface Props {
+  title: string;
+  publishedAt: string;
+  category: string;
+  body: string;
+}
+
+const { title, publishedAt, category, body } = Astro.props;
+const url = Astro.url.href;
+
+const categoryLabels: Record<string, string> = {
+  news2022: '2022',
+  news2023: '2023',
+  news2024: '2024',
+  news2025: '2025',
+};
+---
+
+<BaseLayout title={title}>
+  <Breadcrumb items={[
+    { label: '経営者の気づきとまなび', href: '/posts/' },
+    { label: title }
+  ]} />
+
+  <article class="max-w-3xl mx-auto px-4 py-10">
+    <div class="mb-6">
+      <div class="flex items-center gap-3 mb-3">
+        <time class="text-sm text-text-light">{publishedAt}</time>
+        <span class="text-xs bg-primary-light text-primary px-2 py-0.5 rounded font-medium">
+          {categoryLabels[category] || category}
+        </span>
+      </div>
+      <h1 class="text-2xl md:text-3xl font-bold leading-tight">{title}</h1>
+    </div>
+
+    <div class="aspect-video bg-bg-gray rounded-lg flex items-center justify-center mb-8">
+      <svg class="w-20 h-20 text-border" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+    </div>
+
+    <div class="prose" set:html={body} />
+
+    <div class="mt-10 pt-6 border-t border-border">
+      <ShareButtons url={url} title={title} />
+    </div>
+
+    <div class="mt-10 text-center">
+      <a href="/posts/" class="inline-flex items-center gap-2 px-6 py-3 border border-border rounded hover:bg-bg-gray transition-colors text-sm">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        記事一覧に戻る
+      </a>
+    </div>
+  </article>
+</BaseLayout>

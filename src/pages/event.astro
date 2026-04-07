@@ -1,0 +1,272 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+---
+
+<BaseLayout title="イベント" description="東京中小企業家同友会 三多摩支部の例会、合宿研修、懇親会、外部団体交流などのイベント情報をご紹介します。">
+
+  <Breadcrumb items={[{ label: 'イベント' }]} />
+
+  <!-- ========== Hero ========== -->
+  <section class="bg-gradient-to-br from-primary via-primary-dark to-emerald-800 py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-4 text-center text-white">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">イベント</h1>
+      <p class="text-lg md:text-xl text-white/90 leading-relaxed">
+        経営を学び、仲間とつながる<br class="hidden md:inline" />
+        多彩なイベントを開催しています。
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== 例会 ========== -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-text text-center mb-2">例会</h2>
+      <div class="w-16 h-1 bg-primary mx-auto mb-10 rounded"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
+        <div class="lg:col-span-3">
+          <p class="text-text-light leading-relaxed mb-6">
+            例会は三多摩支部の活動の中心となるイベントです。毎月1回、会員企業の経営者が一堂に会し、経営体験の報告とグループ討論を通じて学び合います。
+          </p>
+          <p class="text-text-light leading-relaxed mb-6">
+            報告者は自社の経営課題や成功体験、失敗から学んだことなどを率直に語ります。その後のグループ討論では、参加者全員が自分事として考え、多角的な視点から意見を交わします。「聞くだけ」ではなく「参加する」学びの場であることが同友会の例会の最大の特徴です。
+          </p>
+          <p class="text-text-light leading-relaxed">
+            会員以外の方もゲストとして参加いただけます。経営者同士が本音で語り合う雰囲気を、ぜひ一度体験してください。
+          </p>
+        </div>
+
+        <div class="lg:col-span-2">
+          <div class="bg-bg-gray rounded-lg border border-border p-6">
+            <h3 class="text-lg font-bold text-text mb-4">開催概要</h3>
+            <dl class="space-y-3">
+              <div class="flex gap-3">
+                <dt class="flex-shrink-0 font-bold text-text text-sm w-20">開催日</dt>
+                <dd class="text-text-light text-sm">毎月第3木曜日（原則）</dd>
+              </div>
+              <div class="flex gap-3">
+                <dt class="flex-shrink-0 font-bold text-text text-sm w-20">時間</dt>
+                <dd class="text-text-light text-sm">18:30〜21:00</dd>
+              </div>
+              <div class="flex gap-3">
+                <dt class="flex-shrink-0 font-bold text-text text-sm w-20">会場</dt>
+                <dd class="text-text-light text-sm">立川市内の会議室<br />（変更になる場合があります）</dd>
+              </div>
+              <div class="flex gap-3">
+                <dt class="flex-shrink-0 font-bold text-text text-sm w-20">参加費</dt>
+                <dd class="text-text-light text-sm">会員：無料<br />ゲスト：1,000円</dd>
+              </div>
+              <div class="flex gap-3">
+                <dt class="flex-shrink-0 font-bold text-text text-sm w-20">内容</dt>
+                <dd class="text-text-light text-sm">経営体験報告（40分）<br />グループ討論（60分）<br />まとめ・交流（20分）</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 bg-primary-light rounded-lg p-6 border border-border">
+        <h3 class="font-bold text-text mb-3">例会の流れ</h3>
+        <div class="flex flex-col md:flex-row items-center gap-3 text-center">
+          <div class="bg-white rounded-lg px-5 py-3 border border-border flex-1 w-full">
+            <p class="text-sm text-text-light">18:30〜</p>
+            <p class="font-bold text-text text-sm">開会・挨拶</p>
+          </div>
+          <svg class="w-6 h-6 text-primary rotate-90 md:rotate-0 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          <div class="bg-white rounded-lg px-5 py-3 border border-border flex-1 w-full">
+            <p class="text-sm text-text-light">18:40〜</p>
+            <p class="font-bold text-text text-sm">経営体験報告</p>
+          </div>
+          <svg class="w-6 h-6 text-primary rotate-90 md:rotate-0 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          <div class="bg-white rounded-lg px-5 py-3 border border-border flex-1 w-full">
+            <p class="text-sm text-text-light">19:20〜</p>
+            <p class="font-bold text-text text-sm">グループ討論</p>
+          </div>
+          <svg class="w-6 h-6 text-primary rotate-90 md:rotate-0 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          <div class="bg-white rounded-lg px-5 py-3 border border-border flex-1 w-full">
+            <p class="text-sm text-text-light">20:20〜</p>
+            <p class="font-bold text-text text-sm">グループ発表</p>
+          </div>
+          <svg class="w-6 h-6 text-primary rotate-90 md:rotate-0 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          <div class="bg-white rounded-lg px-5 py-3 border border-border flex-1 w-full">
+            <p class="text-sm text-text-light">20:50〜</p>
+            <p class="font-bold text-text text-sm">まとめ・閉会</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 合宿研修 ========== -->
+  <section class="py-16 md:py-20 bg-bg-gray">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-text text-center mb-2">合宿研修</h2>
+      <div class="w-16 h-1 bg-primary mx-auto mb-10 rounded"></div>
+
+      <div class="bg-white rounded-lg shadow-sm border border-border overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-2">
+          <div class="bg-gradient-to-br from-primary to-primary-dark p-8 md:p-10 text-white flex flex-col justify-center">
+            <h3 class="text-2xl font-bold mb-4">年に一度の集中研修</h3>
+            <p class="text-white/90 leading-relaxed mb-4">
+              毎年7月に開催される1泊2日の合宿研修は、日常の業務から離れ、経営課題にじっくりと向き合うことができる貴重な機会です。
+            </p>
+            <p class="text-white/90 leading-relaxed">
+              通常の例会では話しきれないテーマを深掘りし、夜遅くまで経営者同士が熱い議論を交わします。研修後は会員同士の結束力が格段に強まり、その後の活動にも好影響をもたらします。
+            </p>
+          </div>
+          <div class="p-8 md:p-10">
+            <h3 class="text-lg font-bold text-text mb-4">主なプログラム内容</h3>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-8 h-8 bg-primary-light rounded-full flex items-center justify-center">
+                  <span class="text-primary font-bold text-sm">1</span>
+                </span>
+                <div>
+                  <p class="font-bold text-text text-sm">基調講演</p>
+                  <p class="text-text-light text-sm">外部講師や先輩経営者による講演。最新の経営トレンドや成功事例を学びます。</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-8 h-8 bg-primary-light rounded-full flex items-center justify-center">
+                  <span class="text-primary font-bold text-sm">2</span>
+                </span>
+                <div>
+                  <p class="font-bold text-text text-sm">分科会・ワークショップ</p>
+                  <p class="text-text-light text-sm">テーマ別の分科会で、少人数のグループワークを実施します。</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-8 h-8 bg-primary-light rounded-full flex items-center justify-center">
+                  <span class="text-primary font-bold text-sm">3</span>
+                </span>
+                <div>
+                  <p class="font-bold text-text text-sm">懇親会</p>
+                  <p class="text-text-light text-sm">夕食を兼ねた懇親会で、普段は話す機会の少ない会員とも親睦を深めます。</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-8 h-8 bg-primary-light rounded-full flex items-center justify-center">
+                  <span class="text-primary font-bold text-sm">4</span>
+                </span>
+                <div>
+                  <p class="font-bold text-text text-sm">朝活セッション</p>
+                  <p class="text-text-light text-sm">2日目の朝は、前日の学びを振り返りながら自社への活かし方を考えます。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 懇親会 ========== -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-text text-center mb-2">懇親会</h2>
+      <div class="w-16 h-1 bg-primary mx-auto mb-10 rounded"></div>
+
+      <div class="max-w-4xl mx-auto">
+        <p class="text-text-light leading-relaxed text-center mb-10">
+          同友会の活動では、フォーマルな学びの場だけでなく、リラックスした雰囲気で交流できる懇親会も大切にしています。経営者同士が人として信頼し合える関係を築くことが、良い学びの土台になると考えています。
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-bg-gray rounded-lg p-6 border border-border text-center">
+            <div class="w-14 h-14 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-text mb-2">忘年会</h3>
+            <p class="text-sm text-text-light leading-relaxed">毎年12月に開催。一年間の活動を振り返り、会員同士で労をねぎらう恒例行事です。家族参加も歓迎しています。</p>
+          </div>
+
+          <div class="bg-bg-gray rounded-lg p-6 border border-border text-center">
+            <div class="w-14 h-14 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-text mb-2">新年会</h3>
+            <p class="text-sm text-text-light leading-relaxed">毎年1月に開催。新しい年の抱負を語り合い、今年一年の経営への決意を新たにします。</p>
+          </div>
+
+          <div class="bg-bg-gray rounded-lg p-6 border border-border text-center">
+            <div class="w-14 h-14 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-text mb-2">例会後交流会</h3>
+            <p class="text-sm text-text-light leading-relaxed">毎月の例会終了後に開催する交流会。例会での議論をさらに深めたり、気軽に情報交換を行います。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 外部団体交流 ========== -->
+  <section class="py-16 md:py-20 bg-bg-gray">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-text text-center mb-2">外部団体交流</h2>
+      <div class="w-16 h-1 bg-primary mx-auto mb-10 rounded"></div>
+
+      <div class="max-w-4xl mx-auto">
+        <p class="text-text-light leading-relaxed text-center mb-10">
+          三多摩支部では、同友会の枠を超えて地域の様々な団体・機関と連携し、中小企業の経営環境向上に取り組んでいます。
+        </p>
+
+        <div class="space-y-4">
+          <div class="bg-white rounded-lg border border-border p-6 flex items-start gap-4">
+            <div class="w-12 h-12 bg-primary-light rounded-full flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-text mb-1">行政機関との連携</h3>
+              <p class="text-text-light text-sm leading-relaxed">立川市・八王子市・多摩市などの自治体と連携し、中小企業振興政策への提言や、行政主催の産業振興イベントへの参加・協力を行っています。</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg border border-border p-6 flex items-start gap-4">
+            <div class="w-12 h-12 bg-primary-light rounded-full flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-text mb-1">教育機関との交流</h3>
+              <p class="text-text-light text-sm leading-relaxed">地域の大学・高校・専門学校と連携し、キャリア教育への講師派遣、合同企業説明会の開催、インターンシップの受け入れなどを行っています。</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg border border-border p-6 flex items-start gap-4">
+            <div class="w-12 h-12 bg-primary-light rounded-full flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-text mb-1">他支部・他団体との交流</h3>
+              <p class="text-text-light text-sm leading-relaxed">東京同友会の他支部との合同例会や、地域の商工会議所・法人会・異業種交流団体との交流イベントを通じて、より広いネットワークを構築しています。</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg border border-border p-6 flex items-start gap-4">
+            <div class="w-12 h-12 bg-primary-light rounded-full flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-text mb-1">金融機関との関係づくり</h3>
+              <p class="text-text-light text-sm leading-relaxed">地域の信用金庫や地方銀行との情報交換会を実施し、中小企業の資金調達や経営改善に関する相互理解を深めています。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">イベントへのゲスト参加を歓迎します</h2>
+      <p class="text-white/90 text-lg mb-8">三多摩支部の例会やイベントに興味をお持ちの方は、まずはゲストとしてお気軽にご参加ください。経営者同士の学びの場を体験していただけます。</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact/" class="inline-block bg-white text-primary font-bold py-3 px-8 rounded-lg hover:bg-primary-light transition-colors text-lg">お問い合わせ</a>
+        <a href="/welcome/" class="inline-block bg-transparent text-white font-bold py-3 px-8 rounded-lg border-2 border-white hover:bg-white/10 transition-colors text-lg">入会案内はこちら</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

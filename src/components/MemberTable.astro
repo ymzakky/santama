@@ -1,0 +1,39 @@
+---
+import type { Member } from '../lib/mockData';
+
+interface Props {
+  members: Member[];
+}
+const { members } = Astro.props;
+---
+
+<div class="overflow-x-auto">
+  <table class="w-full border-collapse">
+    <thead>
+      <tr class="bg-primary text-white">
+        <th class="px-4 py-3 text-left text-sm font-medium">氏名</th>
+        <th class="px-4 py-3 text-left text-sm font-medium">会社名</th>
+        <th class="px-4 py-3 text-left text-sm font-medium hidden md:table-cell">事業概要</th>
+        <th class="px-4 py-3 text-left text-sm font-medium hidden lg:table-cell">URL</th>
+        <th class="px-4 py-3 text-left text-sm font-medium hidden lg:table-cell">本社住所</th>
+      </tr>
+    </thead>
+    <tbody>
+      {members.map((member, i) => (
+        <tr class={i % 2 === 0 ? 'bg-white' : 'bg-bg-gray'}>
+          <td class="px-4 py-3 text-sm">{member.name}</td>
+          <td class="px-4 py-3 text-sm font-medium">{member.company}</td>
+          <td class="px-4 py-3 text-sm hidden md:table-cell text-text-light">{member.description}</td>
+          <td class="px-4 py-3 text-sm hidden lg:table-cell">
+            {member.url && (
+              <a href={member.url} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline truncate block max-w-[200px]">
+                {member.url.replace('https://', '')}
+              </a>
+            )}
+          </td>
+          <td class="px-4 py-3 text-sm hidden lg:table-cell text-text-light">{member.address}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

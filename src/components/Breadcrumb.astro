@@ -1,0 +1,26 @@
+---
+interface Props {
+  items: { label: string; href?: string }[];
+}
+const { items } = Astro.props;
+---
+
+<nav class="bg-bg-gray py-3" aria-label="パンくずリスト">
+  <div class="max-w-7xl mx-auto px-4">
+    <ol class="flex items-center gap-2 text-sm text-text-light flex-wrap">
+      <li>
+        <a href="/" class="hover:text-primary transition-colors">トップ</a>
+      </li>
+      {items.map((item, i) => (
+        <li class="flex items-center gap-2">
+          <span class="text-border">/</span>
+          {item.href ? (
+            <a href={item.href} class="hover:text-primary transition-colors">{item.label}</a>
+          ) : (
+            <span class="text-text">{item.label}</span>
+          )}
+        </li>
+      ))}
+    </ol>
+  </div>
+</nav>
