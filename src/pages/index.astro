@@ -1,12 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getLatestPosts } from '../lib/mockData';
+import { getLatestPosts } from '../lib/microcms';
 import PostCard from '../components/PostCard.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import CTASection from '../components/CTASection.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 
-const latestPosts = getLatestPosts(3);
+const latestPosts = await getLatestPosts(3);
 
 const menuCards = [
   { title: '三多摩支部について', desc: '三多摩支部の概要、活動理念、組織体制についてご紹介します。', href: '/about/', icon: '<svg class="w-7 h-7 text-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>' },

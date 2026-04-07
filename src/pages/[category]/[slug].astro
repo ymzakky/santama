@@ -1,9 +1,10 @@
 ---
 import PostLayout from '../../layouts/PostLayout.astro';
-import { posts } from '../../lib/mockData';
-import type { Post } from '../../lib/mockData';
+import { getAllPosts } from '../../lib/microcms';
+import type { Post } from '../../lib/microcms';
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
   return posts.map((post) => ({
     params: { category: post.category, slug: post.slug },
     props: { post },

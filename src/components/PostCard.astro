@@ -7,7 +7,7 @@ interface Props {
   excerpt: string;
 }
 const { title, slug, category, publishedAt, excerpt } = Astro.props;
-import { categoryLabels } from '../lib/mockData';
+import { categoryLabels } from '../lib/microcms';
 ---
 
 <article class="bg-white rounded-lg shadow-sm border border-border overflow-hidden hover:shadow-md transition-shadow">

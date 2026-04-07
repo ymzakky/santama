@@ -2,11 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import PostCard from '../../components/PostCard.astro';
-import { posts, categories, getCategoryLabel } from '../../lib/mockData';
+import { getAllPosts, categories, getCategoryLabel } from '../../lib/microcms';
 
-const sortedPosts = [...posts].sort(
-  (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-);
+const sortedPosts = await getAllPosts();
 
 const categoryFilters = [
   { label: '全て', href: '/posts/', key: 'all' },

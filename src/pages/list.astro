@@ -2,7 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import MemberTable from '../components/MemberTable.astro';
-import { members } from '../lib/mockData';
+import { getAllMembers } from '../lib/microcms';
+
+const members = await getAllMembers();
 ---
 
 <BaseLayout title="会員企業一覧">
