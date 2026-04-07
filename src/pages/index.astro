@@ -9,28 +9,28 @@ const latestPosts = getLatestPosts(3);
 <BaseLayout title="トップページ">
 
   <!-- ========== Hero Slider ========== -->
-  <section class="relative w-full h-[500px] md:h-[600px] overflow-hidden" id="hero-slider">
+  <section class="relative w-full h-[350px] sm:h-[450px] md:h-[600px] overflow-hidden" role="region" aria-label="メインスライダー" aria-roledescription="carousel" id="hero-slider">
     <!-- Slides -->
     <div class="slider-track flex w-[300%] h-full transition-transform duration-700 ease-in-out">
       <!-- Slide 1 -->
       <div class="w-full h-full flex-shrink-0 bg-gradient-to-br from-primary via-primary-dark to-emerald-800 flex items-center justify-center">
         <div class="text-center text-white px-4">
-          <h2 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">共に学び、共に成長する</h2>
-          <p class="text-lg md:text-2xl font-medium drop-shadow">東京中小企業家同友会 三多摩支部</p>
+          <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">共に学び、共に成長する</h1>
+          <p class="text-base sm:text-lg md:text-2xl font-medium drop-shadow">東京中小企業家同友会 三多摩支部</p>
         </div>
       </div>
       <!-- Slide 2 -->
       <div class="w-full h-full flex-shrink-0 bg-gradient-to-br from-emerald-700 via-primary to-teal-600 flex items-center justify-center">
         <div class="text-center text-white px-4">
-          <h2 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">経営者のための学びの場</h2>
-          <p class="text-lg md:text-2xl font-medium drop-shadow">月例会・セミナー・合宿研修</p>
+          <p class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">経営者のための学びの場</p>
+          <p class="text-base sm:text-lg md:text-2xl font-medium drop-shadow">月例会・セミナー・合宿研修</p>
         </div>
       </div>
       <!-- Slide 3 -->
       <div class="w-full h-full flex-shrink-0 bg-gradient-to-br from-teal-700 via-emerald-600 to-primary flex items-center justify-center">
         <div class="text-center text-white px-4">
-          <h2 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">仲間と共に経営を考える</h2>
-          <p class="text-lg md:text-2xl font-medium drop-shadow">会員企業40社以上のネットワーク</p>
+          <p class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">仲間と共に経営を考える</p>
+          <p class="text-base sm:text-lg md:text-2xl font-medium drop-shadow">会員企業40社以上のネットワーク</p>
         </div>
       </div>
     </div>
@@ -253,6 +253,17 @@ const latestPosts = getLatestPosts(3);
   });
 
   startAutoplay();
+
+  // Keyboard navigation for slider
+  document.getElementById('hero-slider')?.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      goToSlide((currentSlide - 1 + totalSlides) % totalSlides);
+      resetAutoplay();
+    } else if (e.key === 'ArrowRight') {
+      goToSlide((currentSlide + 1) % totalSlides);
+      resetAutoplay();
+    }
+  });
 
   // ========== Tabs ==========
   const tabButtons = document.querySelectorAll('.tab-btn');

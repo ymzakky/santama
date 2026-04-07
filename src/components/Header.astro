@@ -30,9 +30,12 @@ const navItems = [
         </a>
       </div>
       <!-- Mobile menu button -->
-      <button id="mobile-menu-btn" class="md:hidden p-2" aria-label="メニューを開く">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <button id="mobile-menu-btn" class="md:hidden p-2" aria-label="メニューを開く" aria-expanded="false">
+        <svg class="w-6 h-6 menu-icon-open" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg class="w-6 h-6 menu-icon-close hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
@@ -70,7 +73,13 @@ const navItems = [
 <script>
   const btn = document.getElementById('mobile-menu-btn');
   const nav = document.getElementById('mobile-nav');
+  const iconOpen = btn?.querySelector('.menu-icon-open');
+  const iconClose = btn?.querySelector('.menu-icon-close');
   btn?.addEventListener('click', () => {
-    nav?.classList.toggle('hidden');
+    const isOpen = !nav?.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(isOpen));
+    btn.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+    iconOpen?.classList.toggle('hidden', isOpen);
+    iconClose?.classList.toggle('hidden', !isOpen);
   });
 </script>

@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+---
+
+<BaseLayout title="プライバシーポリシー" description="東京中小企業家同友会 三多摩支部のプライバシーポリシーです。">
+  <Breadcrumb items={[{ label: 'プライバシーポリシー' }]} />
+
+  <section class="py-12 md:py-16">
+    <div class="max-w-3xl mx-auto px-4">
+      <h1 class="text-3xl font-bold text-primary-dark mb-8 md:text-4xl">プライバシーポリシー</h1>
+
+      <div class="prose">
+        <p>東京中小企業家同友会 三多摩支部（以下「当支部」）は、個人情報の保護に関する法令等を遵守し、以下のとおり個人情報保護方針を定め、適切な取り扱いに努めます。</p>
+
+        <h2>1. 個人情報の取得</h2>
+        <p>当支部は、お問い合わせフォーム、入会申込等を通じて、お名前、メールアドレス、電話番号、会社名等の個人情報を取得することがあります。</p>
+
+        <h2>2. 個人情報の利用目的</h2>
+        <p>取得した個人情報は、以下の目的で利用いたします。</p>
+        <ul>
+          <li>お問い合わせへの回答・対応</li>
+          <li>入会手続きに関するご連絡</li>
+          <li>例会・イベント等のご案内</li>
+          <li>当支部の運営に必要な連絡</li>
+        </ul>
+
+        <h2>3. 個人情報の第三者提供</h2>
+        <p>当支部は、法令に定める場合を除き、ご本人の同意なく個人情報を第三者に提供することはありません。ただし、東京中小企業家同友会の活動に関連して、同友会本部と共有する場合があります。</p>
+
+        <h2>4. 個人情報の管理</h2>
+        <p>当支部は、個人情報の漏洩、滅失、毀損の防止のために適切なセキュリティ対策を講じます。</p>
+
+        <h2>5. お問い合わせ</h2>
+        <p>個人情報の取り扱いに関するお問い合わせは、<a href="/contact/" class="text-primary hover:text-primary-dark">お問い合わせフォーム</a>よりご連絡ください。</p>
+      </div>
+
+      <p class="text-sm text-text-light mt-8">制定日：2025年4月1日</p>
+    </div>
+  </section>
+</BaseLayout>

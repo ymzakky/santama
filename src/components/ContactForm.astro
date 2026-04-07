@@ -37,6 +37,7 @@
       id="name"
       name="name"
       required
+      aria-required="true"
       class="w-full px-4 py-2 border border-border rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
       placeholder="例：山田 太郎"
     />
@@ -66,6 +67,7 @@
       id="email"
       name="email"
       required
+      aria-required="true"
       class="w-full px-4 py-2 border border-border rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
       placeholder="例：info@example.com"
     />
@@ -140,6 +142,11 @@
       form.reportValidity();
       return;
     }
+    const checked = form.querySelectorAll('input[name="interest"]:checked');
+    if (checked.length === 0) {
+      alert('ご興味のある項目を1つ以上選択してください。');
+      return;
+    }
     const data = new FormData(form);
     const interests = data.getAll('interest').join(', ');
     const items = [
@@ -151,10 +158,20 @@
       { label: 'お問い合わせ内容', value: data.get('message') as string },
     ];
     if (confirmContent) {
-      confirmContent.innerHTML = items
-        .filter(i => i.value)
-        .map(i => `<div class="border-b border-border pb-3"><p class="text-xs text-text-light mb-1">${i.label}</p><p class="text-sm">${i.value}</p></div>`)
-        .join('');
+      confirmContent.innerHTML = '';
+      items.filter(i => i.value).forEach(i => {
+        const div = document.createElement('div');
+        div.className = 'border-b border-border pb-3';
+        const label = document.createElement('p');
+        label.className = 'text-xs text-text-light mb-1';
+        label.textContent = i.label;
+        const val = document.createElement('p');
+        val.className = 'text-sm';
+        val.textContent = i.value;
+        div.appendChild(label);
+        div.appendChild(val);
+        confirmContent.appendChild(div);
+      });
     }
     modal?.classList.remove('hidden');
   });

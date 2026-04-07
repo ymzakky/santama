@@ -10,6 +10,7 @@ interface Props {
 
 const { title, description = '東京中小企業家同友会 三多摩支部の公式サイトです。中小企業の経営者が互いに学び合い、共に成長する場を提供しています。' } = Astro.props;
 const siteTitle = `${title} | 東京中小企業家同友会 三多摩支部`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://doyu-santama.tokyo').href;
 ---
 
 <!DOCTYPE html>
@@ -23,6 +24,11 @@ const siteTitle = `${title} | 東京中小企業家同友会 三多摩支部`;
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="東京中小企業家同友会 三多摩支部" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={siteTitle} />
+  <meta name="twitter:description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 </head>
 <body class="min-h-screen flex flex-col">
