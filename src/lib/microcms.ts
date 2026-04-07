@@ -76,6 +76,29 @@ export const footerNavItems = [
   { label: 'お問い合わせ', href: '/contact/' },
 ];
 
+// ---------- Helpers ----------
+
+/**
+ * Normalize the category value from microCMS.
+ * Select fields may return an array like ["2025"] or a string like "2025".
+ * We normalize to the "news2025" format used in our routing.
+ */
+function normalizeCategory(raw: unknown): string {
+  let val = Array.isArray(raw) ? raw[0] : raw;
+  if (typeof val !== 'string') val = String(val);
+  // If the value is already in "newsXXXX" format, return as-is
+  if (val.startsWith('news')) return val;
+  // Otherwise, prefix with "news"
+  return `news${val}`;
+}
+
+function normalizePost(post: any): Post {
+  return {
+    ...post,
+    category: normalizeCategory(post.category),
+  };
+}
+
 // ---------- API functions ----------
 
 export async function getAllPosts(): Promise<Post[]> {
@@ -83,19 +106,23 @@ export async function getAllPosts(): Promise<Post[]> {
     endpoint: 'news',
     queries: { limit: 100, orders: '-publishedAt' },
   });
-  return res.contents;
+  return res.contents.map(normalizePost);
 }
 
 export async function getPostsByCategory(category: string): Promise<Post[]> {
+  // Strip "news" prefix for microCMS filter if the stored value doesn't have it
+  const filterValue = category.startsWith('news') ? category.replace('news', '') : category;
+
+  // Try both formats to handle however the data is stored
   const res = await client.getList<Post>({
     endpoint: 'news',
     queries: {
       limit: 100,
-      filters: `category[equals]${category}`,
+      filters: `category[contains]${filterValue}`,
       orders: '-publishedAt',
     },
   });
-  return res.contents;
+  return res.contents.map(normalizePost);
 }
 
 export async function getLatestPosts(count: number): Promise<Post[]> {
