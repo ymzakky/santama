@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getLatestPosts } from '../lib/mockData';
+import PostCard from '../components/PostCard.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CTASection from '../components/CTASection.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+
+const latestPosts = getLatestPosts(3);
+
+const menuCards = [
+  { title: '三多摩支部について', desc: '三多摩支部の概要、活動理念、組織体制についてご紹介します。', href: '/about/', icon: '<svg class="w-7 h-7 text-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>' },
+  { title: 'お知らせ', desc: '例会報告やイベント情報など、最新のお知らせをお届けします。', href: '/posts/', icon: '<svg class="w-7 h-7 text-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>' },
+  { title: '活動内容', desc: '月例会、セミナー、合宿研修など、同友会の活動内容をご紹介します。', href: '/our-services/', icon: '<svg class="w-7 h-7 text-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>' },
+  { title: 'イベント・例会', desc: '今後の例会やイベントのスケジュールを確認できます。', href: '/event/', icon: '<svg class="w-7 h-7 text-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>' },
+  { title: '会員一覧', desc: '三多摩支部に所属する会員企業の一覧をご覧いただけます。', href: '/list/', icon: '<svg class="w-7 h-7 text-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>' },
+  { title: '入会案内', desc: '入会の流れや会費、特典など、入会に関する情報をご案内します。', href: '/welcome/', icon: '<svg class="w-7 h-7 text-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>' },
+];
+---
+
+<BaseLayout title="トップページ">
+
+  <!-- ========== Hero Slider ========== -->
+  <section class="relative w-full h-[350px] sm:h-[450px] md:h-[600px] overflow-hidden" role="region" aria-label="メインスライダー" aria-roledescription="carousel" id="hero-slider">
+    <div class="slider-track flex w-[300%] h-full transition-transform duration-700 ease-in-out">
+      <div class="w-full h-full flex-shrink-0 bg-gradient-to-br from-primary via-primary-dark to-emerald-800 flex items-center justify-center">
+        <div class="text-center text-white px-4">
+          <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">共に学び、共に成長する</h1>
+          <p class="text-base sm:text-lg md:text-2xl font-medium drop-shadow">東京中小企業家同友会 三多摩支部</p>
+        </div>
+      </div>
+      <div class="w-full h-full flex-shrink-0 bg-gradient-to-br from-emerald-700 via-primary to-teal-600 flex items-center justify-center">
+        <div class="text-center text-white px-4">
+          <p class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">経営者のための学びの場</p>
+          <p class="text-base sm:text-lg md:text-2xl font-medium drop-shadow">月例会・セミナー・合宿研修</p>
+        </div>
+      </div>
+      <div class="w-full h-full flex-shrink-0 bg-gradient-to-br from-teal-700 via-emerald-600 to-primary flex items-center justify-center">
+        <div class="text-center text-white px-4">
+          <p class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">仲間と共に経営を考える</p>
+          <p class="text-base sm:text-lg md:text-2xl font-medium drop-shadow">会員企業40社以上のネットワーク</p>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+      {[0, 1, 2].map(i => (
+        <button class:list={['slider-dot w-3 h-3 rounded-full border-2 border-white transition-all', i === 0 ? 'bg-white/90' : 'bg-white/40']} data-slide={i} aria-label={`スライド${i + 1}`} />
+      ))}
+    </div>
+  </section>
+
+  <!-- ========== 同友会紹介 ========== -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <SectionHeading title="同友会とは" />
+      <p class="text-text-light leading-relaxed text-base md:text-lg">
+        中小企業家同友会は、中小企業の経営者が「よい会社をつくろう」「よい経営者になろう」「よい経営環境をつくろう」の3つの目的のもとに自主的に集まり、互いに学び合う団体です。
+        三多摩支部は東京都の多摩地域を拠点に活動しており、業種・業態を超えた経営者同士が本音で語り合い、共に成長できる場を提供しています。
+        月例会や経営指針セミナー、合宿研修など多彩なプログラムを通じて、実践的な経営力を高めることを目指しています。
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== タブUI - 3つの魅力 ========== -->
+  <section class="py-16 md:py-20 bg-bg-gray">
+    <div class="max-w-5xl mx-auto px-4">
+      <SectionHeading title="三多摩支部 3つの魅力" />
+
+      <div class="flex border-b border-border mb-0" id="tab-buttons">
+        {(['学びの場', 'つながり', '支援']).map((label, i) => (
+          <button class:list={['tab-btn flex-1 py-4 text-center font-bold border-b-4 transition-colors', i === 0 ? 'text-white bg-primary border-primary-dark' : 'text-text-light bg-white hover:bg-primary-light border-transparent']} data-tab={i}>{label}</button>
+        ))}
+      </div>
+
+      <div class="bg-white rounded-b-lg shadow-sm">
+        {([
+          { title: '月例会や経営指針セミナーで実践的に学ぶ', text: '毎月開催される例会では、会員企業の経営体験報告やグループ討論を通じて、経営課題の解決策を探ります。また、経営指針成文化セミナーでは、経営理念・方針・計画の策定を体系的に学ぶことができます。合宿研修では日常を離れ、じっくりと自社の将来を考える時間が持てます。', icon: '<svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>' },
+          { title: '経営者同士のネットワークが広がる', text: '業種・業態を超えた40社以上の会員企業が参加しており、多様な視点からのアドバイスを得ることができます。経営者同士だからこそ分かり合える悩みを共有し、本音で語り合える仲間が見つかります。懇親会や交流イベントも定期的に開催し、ビジネスパートナーとの出会いの場にもなっています。', icon: '<svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>' },
+          { title: '各種支援サービスの活用', text: '同友会では、共済制度や福利厚生サービス、各種セミナーの割引など、会員向けの支援サービスを提供しています。経営相談や専門家の紹介、行政への政策提言活動にも力を入れています。中小企業の経営基盤を強化するための様々なサポートを受けることができます。', icon: '<svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>' },
+        ]).map((tab, i) => (
+          <div class:list={['tab-panel p-8 md:p-10', i > 0 && 'hidden']} data-panel={i}>
+            <div class="flex flex-col md:flex-row gap-6 items-center">
+              <div class="flex-shrink-0 w-20 h-20 bg-primary-light rounded-full flex items-center justify-center">
+                <Fragment set:html={tab.icon} />
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-text mb-3">{tab.title}</h3>
+                <p class="text-text-light leading-relaxed">{tab.text}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="まずは例会にお試し参加しませんか？"
+    description="同友会の雰囲気を体感していただけるよう、ゲスト参加を歓迎しています。お気軽にお問い合わせください。"
+    primaryLabel="例会スケジュールを見る"
+    primaryHref="/event/"
+  />
+
+  <!-- ========== 最新のお知らせ ========== -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <SectionHeading title="最新のお知らせ" />
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {latestPosts.map(post => (
+          <PostCard
+            title={post.title}
+            slug={post.slug}
+            category={post.category}
+            publishedAt={post.publishedAt}
+            excerpt={post.excerpt}
+          />
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <a href="/posts/" class="inline-flex items-center gap-2 text-primary font-bold hover:text-primary-dark transition-colors text-lg">
+          一覧を見る
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== メニューカード ========== -->
+  <section class="py-16 md:py-20 bg-bg-gray">
+    <div class="max-w-6xl mx-auto px-4">
+      <SectionHeading title="コンテンツ" />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {menuCards.map(card => (
+          <FeatureCard title={card.title} description={card.desc} icon={card.icon} href={card.href} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script>
+  // ========== Hero Slider ==========
+  const sliderTrack = document.querySelector('.slider-track') as HTMLElement;
+  const dots = document.querySelectorAll('.slider-dot');
+  let currentSlide = 0;
+  const totalSlides = 3;
+  let autoplayTimer: ReturnType<typeof setInterval>;
+
+  function goToSlide(index: number) {
+    currentSlide = index;
+    sliderTrack.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
+    dots.forEach((dot, i) => {
+      if (i === currentSlide) {
+        dot.classList.replace('bg-white/40', 'bg-white/90');
+      } else {
+        dot.classList.replace('bg-white/90', 'bg-white/40');
+      }
+    });
+  }
+
+  function nextSlide() {
+    goToSlide((currentSlide + 1) % totalSlides);
+  }
+
+  function startAutoplay() {
+    autoplayTimer = setInterval(nextSlide, 5000);
+  }
+
+  function resetAutoplay() {
+    clearInterval(autoplayTimer);
+    startAutoplay();
+  }
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const slideIndex = parseInt((dot as HTMLElement).dataset.slide || '0');
+      goToSlide(slideIndex);
+      resetAutoplay();
+    });
+  });
+
+  startAutoplay();
+
+  document.getElementById('hero-slider')?.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      goToSlide((currentSlide - 1 + totalSlides) % totalSlides);
+      resetAutoplay();
+    } else if (e.key === 'ArrowRight') {
+      goToSlide((currentSlide + 1) % totalSlides);
+      resetAutoplay();
+    }
+  });
+
+  // ========== Tabs ==========
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+
+  tabButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const tabIndex = (btn as HTMLElement).dataset.tab || '0';
+
+      tabButtons.forEach((b) => {
+        b.classList.remove('text-white', 'bg-primary', 'border-primary-dark');
+        b.classList.add('text-text-light', 'bg-white', 'border-transparent');
+      });
+      btn.classList.remove('text-text-light', 'bg-white', 'border-transparent');
+      btn.classList.add('text-white', 'bg-primary', 'border-primary-dark');
+
+      tabPanels.forEach((panel) => {
+        if ((panel as HTMLElement).dataset.panel === tabIndex) {
+          panel.classList.remove('hidden');
+        } else {
+          panel.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>

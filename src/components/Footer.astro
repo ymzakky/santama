@@ -1,0 +1,75 @@
+---
+import { footerNavItems as navItems } from '../lib/mockData';
+---
+
+<footer class="bg-accent text-white">
+  <div class="max-w-7xl mx-auto px-4 py-12">
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Logo & Description -->
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm">同</div>
+          <div>
+            <p class="text-xs text-gray-400">東京中小企業家同友会</p>
+            <p class="text-lg font-bold">三多摩支部</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          中小企業家同友会は、中小企業の経営者が自主的に集まり、互いの経験と知恵を出し合いながら企業経営について学びあう団体です。
+        </p>
+      </div>
+      <!-- Navigation -->
+      <div>
+        <h3 class="font-bold mb-4 text-sm">サイトマップ</h3>
+        <ul class="space-y-2">
+          {navItems.map(item => (
+            <li>
+              <a href={item.href} class="text-sm text-gray-400 hover:text-white transition-colors">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <!-- CTA -->
+      <div>
+        <h3 class="font-bold mb-4 text-sm">お問い合わせ</h3>
+        <p class="text-sm text-gray-400 mb-4">
+          入会に関するご質問、例会のお試し参加など、お気軽にお問い合わせください。
+        </p>
+        <a href="/contact/" class="inline-block px-6 py-3 bg-primary text-white text-sm font-bold rounded hover:bg-primary-dark transition-colors">
+          お問い合わせはこちら
+        </a>
+      </div>
+    </div>
+    <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+      <p class="text-xs text-gray-500">&copy; 2025 東京中小企業家同友会 三多摩支部. All Rights Reserved.</p>
+    </div>
+  </div>
+  <!-- Page top button -->
+  <button
+    id="page-top"
+    class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg hover:bg-primary-dark transition-colors opacity-0 pointer-events-none"
+    aria-label="ページトップへ"
+  >
+    <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+</footer>
+
+<script>
+  const topBtn = document.getElementById('page-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      topBtn?.classList.remove('opacity-0', 'pointer-events-none');
+      topBtn?.classList.add('opacity-100');
+    } else {
+      topBtn?.classList.add('opacity-0', 'pointer-events-none');
+      topBtn?.classList.remove('opacity-100');
+    }
+  });
+  topBtn?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://doyu-santama.tokyo/sitemap.xml

@@ -1,0 +1,24 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  href?: string;
+}
+const { title, description, icon, href } = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag
+  href={href}
+  class:list={[
+    'group bg-white rounded-lg shadow-sm border border-border p-6 hover:shadow-md hover:border-primary transition-all',
+    href && 'block',
+  ]}
+>
+  <div class="icon-circle mb-4 group-hover:bg-primary transition-colors">
+    <Fragment set:html={icon} />
+  </div>
+  <h3 class="text-lg font-bold text-text mb-2 group-hover:text-primary transition-colors">{title}</h3>
+  <p class="text-sm text-text-light">{description}</p>
+</Tag>

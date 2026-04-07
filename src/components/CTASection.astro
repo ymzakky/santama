@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+const {
+  title,
+  description,
+  primaryLabel = 'お問い合わせ',
+  primaryHref = '/contact/',
+  secondaryLabel = '入会案内はこちら',
+  secondaryHref = '/welcome/',
+} = Astro.props;
+---
+
+<section class="py-16 md:py-20 bg-primary">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">{title}</h2>
+    <p class="text-white/90 text-lg mb-8">{description}</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href={primaryHref} class="btn-cta-primary">{primaryLabel}</a>
+      <a href={secondaryHref} class="btn-cta-secondary">{secondaryLabel}</a>
+    </div>
+  </div>
+</section>

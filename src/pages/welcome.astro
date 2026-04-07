@@ -1,0 +1,221 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HeroSection from '../components/HeroSection.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CTASection from '../components/CTASection.astro';
+---
+
+<BaseLayout title="入会案内" description="東京中小企業家同友会 三多摩支部への入会案内。入会のメリット、入会の流れ、会費情報をご紹介します。">
+
+  <Breadcrumb items={[{ label: '入会案内' }]} />
+
+  <!-- ========== Hero ========== -->
+  <HeroSection title="入会案内" subtitle="共に学び、共に成長する仲間をお待ちしています。" />
+
+  <!-- ========== 入会のメリット ========== -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <SectionHeading title="入会のメリット" />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div class="flex items-start gap-4 bg-bg-gray rounded-lg p-6 border border-border">
+          <div class="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-text mb-1">経営力の向上</h3>
+            <p class="text-text-light text-sm leading-relaxed">毎月の例会やセミナーを通じて、経営の基礎から実践的なノウハウまで体系的に学ぶことができます。</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 bg-bg-gray rounded-lg p-6 border border-border">
+          <div class="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-text mb-1">経営者仲間のネットワーク</h3>
+            <p class="text-text-light text-sm leading-relaxed">業種を超えた経営者同士のつながりが広がり、本音で語り合える仲間が見つかります。</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 bg-bg-gray rounded-lg p-6 border border-border">
+          <div class="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-text mb-1">経営指針の策定支援</h3>
+            <p class="text-text-light text-sm leading-relaxed">経営指針成文化セミナーで、自社の理念・方針・計画を体系的に策定することができます。</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 bg-bg-gray rounded-lg p-6 border border-border">
+          <div class="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-text mb-1">採用・人材育成の支援</h3>
+            <p class="text-text-light text-sm leading-relaxed">合同企業説明会への参加、新入社員研修・幹部社員研修などの教育プログラムを活用できます。</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 bg-bg-gray rounded-lg p-6 border border-border">
+          <div class="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-text mb-1">共済・福利厚生サービス</h3>
+            <p class="text-text-light text-sm leading-relaxed">同友会独自の共済制度や福利厚生サービスを利用でき、経営基盤の安定に役立ちます。</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 bg-bg-gray rounded-lg p-6 border border-border">
+          <div class="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-text mb-1">政策提言活動への参加</h3>
+            <p class="text-text-light text-sm leading-relaxed">中小企業の経営環境改善に向けた政策提言活動に参加し、自社の声を届けることができます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 入会の流れ ========== -->
+  <section class="py-16 md:py-20 bg-bg-gray">
+    <div class="max-w-4xl mx-auto px-4">
+      <SectionHeading title="入会の流れ" />
+
+      <div class="space-y-0">
+        <!-- Step 1 -->
+        <div class="flex gap-6">
+          <div class="flex flex-col items-center">
+            <div class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">1</div>
+            <div class="w-0.5 bg-primary flex-1 my-2"></div>
+          </div>
+          <div class="pb-10">
+            <h3 class="text-xl font-bold text-text mb-2">お問い合わせ</h3>
+            <p class="text-text-light leading-relaxed">まずはお電話またはお問い合わせフォームからご連絡ください。担当者が活動内容や入会に関するご質問にお答えします。ご不明な点は何でもお気軽にお尋ねください。</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex gap-6">
+          <div class="flex flex-col items-center">
+            <div class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">2</div>
+            <div class="w-0.5 bg-primary flex-1 my-2"></div>
+          </div>
+          <div class="pb-10">
+            <h3 class="text-xl font-bold text-text mb-2">例会体験参加</h3>
+            <p class="text-text-light leading-relaxed">入会を決める前に、まずは例会にゲスト参加してみてください。実際の雰囲気を体験し、会員の経営者と交流していただけます。ゲスト参加費は1,000円です。何度でもゲスト参加いただけますので、納得のうえでご検討ください。</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex gap-6">
+          <div class="flex flex-col items-center">
+            <div class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">3</div>
+            <div class="w-0.5 bg-primary flex-1 my-2"></div>
+          </div>
+          <div class="pb-10">
+            <h3 class="text-xl font-bold text-text mb-2">入会手続き</h3>
+            <p class="text-text-light leading-relaxed">入会を決めたら、入会申込書にご記入ください。既存会員の紹介があるとスムーズですが、紹介がなくてもご入会いただけます。入会金と初月の会費をお支払いいただき、手続き完了です。</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="flex gap-6">
+          <div class="flex flex-col items-center">
+            <div class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">4</div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-text mb-2">会員活動開始</h3>
+            <p class="text-text-light leading-relaxed">正式に入会後は、例会への参加はもちろん、各種セミナーや研修、懇親会などすべての活動にご参加いただけます。新入会員向けのオリエンテーションも実施しますので、安心して活動を始められます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 会費情報 ========== -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <SectionHeading title="会費情報" />
+
+      <div class="bg-bg-gray rounded-lg border border-border overflow-hidden">
+        <table class="w-full">
+          <thead>
+            <tr class="bg-primary text-white">
+              <th class="py-4 px-6 text-left font-bold">項目</th>
+              <th class="py-4 px-6 text-left font-bold">金額（税込）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-border">
+              <td class="py-4 px-6 text-text font-bold">入会金</td>
+              <td class="py-4 px-6 text-text-light">10,000円</td>
+            </tr>
+            <tr class="border-b border-border bg-white">
+              <td class="py-4 px-6 text-text font-bold">月会費</td>
+              <td class="py-4 px-6 text-text-light">
+                <p>社員数に応じて異なります</p>
+                <ul class="text-sm mt-2 space-y-1">
+                  <li>社員数5名以下：20,000円/月</li>
+                  <li>社員数6〜20名：23,000円/月</li>
+                  <li>社員数21〜50名：28,000円/月</li>
+                  <li>社員数51名以上：33,000円/月</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 px-6 text-text font-bold">東京同友会費</td>
+              <td class="py-4 px-6 text-text-light">月会費に含まれます</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-6 bg-primary-light rounded-lg p-6 border border-border">
+        <p class="text-text-light text-sm leading-relaxed">
+          <strong class="text-text">※</strong> 上記は目安の金額です。正確な会費については事務局までお問い合わせください。会費は毎月口座振替でお支払いいただきます。例会やセミナーへの参加費は原則として会費に含まれています（一部有料の特別イベントを除く）。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== よくあるご質問 ========== -->
+  <section class="py-16 md:py-20 bg-bg-gray">
+    <div class="max-w-4xl mx-auto px-4">
+      <SectionHeading title="よくあるご質問" />
+
+      <div class="space-y-4">
+        <div class="bg-white rounded-lg border border-border p-6">
+          <h3 class="font-bold text-text mb-2">Q. どんな業種の経営者が参加していますか？</h3>
+          <p class="text-text-light text-sm leading-relaxed">A. 製造業、建設業、IT、サービス業、飲食業、小売業など、多様な業種の経営者が参加しています。業種を問わず、経営に真剣に向き合う方ならどなたでも歓迎です。</p>
+        </div>
+        <div class="bg-white rounded-lg border border-border p-6">
+          <h3 class="font-bold text-text mb-2">Q. 創業したばかりでも入会できますか？</h3>
+          <p class="text-text-light text-sm leading-relaxed">A. もちろんです。創業間もない方から長年の経営者まで、様々な段階の経営者が集まっています。先輩経営者のアドバイスを受けながら成長できる環境です。</p>
+        </div>
+        <div class="bg-white rounded-lg border border-border p-6">
+          <h3 class="font-bold text-text mb-2">Q. 例会に毎回参加する必要がありますか？</h3>
+          <p class="text-text-light text-sm leading-relaxed">A. 毎回の参加を強制するものではありません。ただし、継続的に参加することで学びが深まり、会員同士の信頼関係も築きやすくなりますので、できる限りご参加いただくことをお勧めしています。</p>
+        </div>
+        <div class="bg-white rounded-lg border border-border p-6">
+          <h3 class="font-bold text-text mb-2">Q. 多摩地域以外の企業でも入会できますか？</h3>
+          <p class="text-text-light text-sm leading-relaxed">A. 三多摩支部は多摩地域を中心に活動していますが、所在地に関わらずご入会いただけます。ただし、例会は立川市内で開催することが多いため、通いやすい方が参加しやすいです。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <CTASection
+    title="まずはお気軽にご連絡ください"
+    description="入会に関するご質問や、例会へのゲスト参加のお申し込みなど、何でもお気軽にお問い合わせください。皆さまのご連絡をお待ちしております。"
+    primaryLabel="お問い合わせはこちら"
+    primaryHref="/contact/"
+  />
+
+</BaseLayout>

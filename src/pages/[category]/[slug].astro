@@ -1,0 +1,25 @@
+---
+import PostLayout from '../../layouts/PostLayout.astro';
+import { posts } from '../../lib/mockData';
+import type { Post } from '../../lib/mockData';
+
+export function getStaticPaths() {
+  return posts.map((post) => ({
+    params: { category: post.category, slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+---
+
+<PostLayout
+  title={post.title}
+  publishedAt={post.publishedAt}
+  category={post.category}
+  body={post.body}
+/>

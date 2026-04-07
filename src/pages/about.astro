@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HeroSection from '../components/HeroSection.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CTASection from '../components/CTASection.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import OrgChart from '../components/OrgChart.astro';
+---
+
+<BaseLayout title="三多摩支部とは" description="東京中小企業家同友会 三多摩支部の概要、活動理念、年間スケジュールをご紹介します。">
+
+  <Breadcrumb items={[{ label: '三多摩支部とは' }]} />
+
+  <!-- ========== Hero ========== -->
+  <HeroSection title="三多摩支部とは" subtitle="東京都多摩地域の中小企業経営者が集い、互いに学び合い、共に成長する場です。" />
+
+  <!-- ========== 3つの魅力 ========== -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <SectionHeading title="3つの魅力" />
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <FeatureCard
+          title="学びの場"
+          description="毎月の例会や経営指針セミナーを通じて、経営の基本から実践的な課題解決まで体系的に学ぶことができます。会員同士のグループ討論では、多様な視点から新たな気づきが得られます。"
+          icon='<svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>'
+        />
+
+        <FeatureCard
+          title="つながり"
+          description="業種・業態を超えた40社以上の経営者ネットワーク。経営者同士だからこそ本音で語り合える仲間が見つかります。懇親会やイベントを通じたビジネスパートナーとの出会いも魅力です。"
+          icon='<svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>'
+        />
+
+        <FeatureCard
+          title="支援体制"
+          description="共済制度や福利厚生サービス、経営相談、専門家紹介など、中小企業の経営基盤を強化する支援サービスが充実。行政への政策提言活動にも力を入れています。"
+          icon='<svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>'
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 同友会の位置づけ ========== -->
+  <section class="py-16 md:py-20 bg-bg-gray">
+    <div class="max-w-4xl mx-auto px-4">
+      <SectionHeading title="同友会の位置づけ" />
+
+      <div class="bg-white rounded-lg shadow-sm border border-border p-8 md:p-10">
+        <p class="text-text-light leading-relaxed mb-6">
+          中小企業家同友会は、全国47都道府県に組織を持つ中小企業経営者の自主的な団体です。「よい会社をつくろう」「よい経営者になろう」「よい経営環境をつくろう」の3つの目的を掲げ、約47,000名の会員が活動しています。
+        </p>
+        <p class="text-text-light leading-relaxed mb-6">
+          <strong class="text-text">東京中小企業家同友会</strong>は、その東京都における組織であり、都内各地域に支部を設けて活動しています。東京同友会全体では約2,400名の会員が在籍し、経営者の学びと交流の場として活発に活動しています。
+        </p>
+        <p class="text-text-light leading-relaxed">
+          <strong class="text-text">三多摩支部</strong>は、東京同友会の支部の一つとして、東京都の多摩地域（立川市・八王子市・多摩市・町田市・府中市など）を中心に活動しています。地域密着型の支部として、多摩地域の中小企業経営者が気軽に参加できる例会やイベントを毎月開催しています。
+        </p>
+
+        <OrgChart />
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 年間スケジュール ========== -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <SectionHeading title="年間スケジュール" />
+
+      <div class="space-y-4">
+        <div class="flex items-start gap-4 bg-bg-gray rounded-lg p-5 border border-border">
+          <span class="flex-shrink-0 bg-primary text-white font-bold rounded-lg px-4 py-2 text-center min-w-[64px]">4月</span>
+          <div>
+            <h3 class="font-bold text-text">定時総会</h3>
+            <p class="text-text-light text-sm">年度の活動方針・予算を決定する最も重要な会議です。全会員が参加します。</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 bg-bg-gray rounded-lg p-5 border border-border">
+          <span class="flex-shrink-0 bg-primary text-white font-bold rounded-lg px-4 py-2 text-center min-w-[64px]">毎月</span>
+          <div>
+            <h3 class="font-bold text-text">月例会</h3>
+            <p class="text-text-light text-sm">会員企業の経営体験報告とグループ討論を中心に、毎月1回開催しています。ゲスト参加も歓迎です。</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 bg-bg-gray rounded-lg p-5 border border-border">
+          <span class="flex-shrink-0 bg-primary text-white font-bold rounded-lg px-4 py-2 text-center min-w-[64px]">6月</span>
+          <div>
+            <h3 class="font-bold text-text">経営指針成文化セミナー（前期）</h3>
+            <p class="text-text-light text-sm">全6回コースの前期が開講。経営理念・方針・計画の策定を体系的に学びます。</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 bg-bg-gray rounded-lg p-5 border border-border">
+          <span class="flex-shrink-0 bg-primary text-white font-bold rounded-lg px-4 py-2 text-center min-w-[64px]">7月</span>
+          <div>
+            <h3 class="font-bold text-text">合宿研修</h3>
+            <p class="text-text-light text-sm">1泊2日の合宿形式で、日常を離れてじっくりと経営課題に向き合います。会員同士の親睦も深まります。</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 bg-bg-gray rounded-lg p-5 border border-border">
+          <span class="flex-shrink-0 bg-primary text-white font-bold rounded-lg px-4 py-2 text-center min-w-[64px]">9月</span>
+          <div>
+            <h3 class="font-bold text-text">合同企業説明会</h3>
+            <p class="text-text-light text-sm">地域の学生・求職者に向けた合同企業説明会を開催。中小企業の魅力を発信します。</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 bg-bg-gray rounded-lg p-5 border border-border">
+          <span class="flex-shrink-0 bg-primary text-white font-bold rounded-lg px-4 py-2 text-center min-w-[64px]">11月</span>
+          <div>
+            <h3 class="font-bold text-text">経営フォーラム</h3>
+            <p class="text-text-light text-sm">東京同友会全体で開催する大規模イベント。外部講師を招いた講演やパネルディスカッションを実施します。</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 bg-bg-gray rounded-lg p-5 border border-border">
+          <span class="flex-shrink-0 bg-primary text-white font-bold rounded-lg px-4 py-2 text-center min-w-[64px]">12月</span>
+          <div>
+            <h3 class="font-bold text-text">忘年会</h3>
+            <p class="text-text-light text-sm">1年の活動を振り返り、会員同士の交流を深める懇親イベントです。</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 bg-bg-gray rounded-lg p-5 border border-border">
+          <span class="flex-shrink-0 bg-primary text-white font-bold rounded-lg px-4 py-2 text-center min-w-[64px]">1月</span>
+          <div>
+            <h3 class="font-bold text-text">新年会</h3>
+            <p class="text-text-light text-sm">新たな年の始まりを会員全員でお祝いし、今年の抱負を語り合います。</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 bg-bg-gray rounded-lg p-5 border border-border">
+          <span class="flex-shrink-0 bg-primary text-white font-bold rounded-lg px-4 py-2 text-center min-w-[64px]">2月</span>
+          <div>
+            <h3 class="font-bold text-text">中小企業憲章・条例推進月間</h3>
+            <p class="text-text-light text-sm">中小企業の社会的役割を広くアピールし、経営環境の改善に向けた活動を行います。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <CTASection
+    title="まずはお気軽にお問い合わせください"
+    description="三多摩支部の活動に興味をお持ちの方は、ぜひ例会へのゲスト参加をご検討ください。経営者同士で学び合う場を、実際に体験していただけます。"
+  />
+
+</BaseLayout>

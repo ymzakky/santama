@@ -1,0 +1,246 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HeroSection from '../components/HeroSection.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CTASection from '../components/CTASection.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import CheckList from '../components/CheckList.astro';
+---
+
+<BaseLayout title="経営者支援サービス" description="東京中小企業家同友会 三多摩支部が提供する経営指針セミナー、就職支援、各種研修、多様な人財雇用支援についてご紹介します。">
+
+  <Breadcrumb items={[{ label: '経営者支援サービス' }]} />
+
+  <!-- ========== Hero ========== -->
+  <HeroSection title="経営者支援サービス" subtitle="中小企業の経営課題を解決するための多彩な支援プログラムをご用意しています。" />
+
+  <!-- ========== 経営指針成文化セミナー ========== -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <SectionHeading title="経営指針成文化セミナー" />
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <p class="text-text-light leading-relaxed mb-6">
+            経営指針成文化セミナーは、経営者が自社の経営理念・経営方針・経営計画を体系的に策定するための全6回コースのプログラムです。同友会の中でも最も人気の高いセミナーの一つであり、多くの会員がこのセミナーを通じて経営の羅針盤を手に入れています。
+          </p>
+          <p class="text-text-light leading-relaxed mb-6">
+            少人数のグループワーク形式で進行し、参加者同士が互いの経営指針をブラッシュアップし合います。経験豊富な先輩経営者がアドバイザーとして伴走するため、初めての方でも安心して取り組むことができます。
+          </p>
+          <p class="text-text-light leading-relaxed">
+            セミナー修了後も、経営指針の実践と見直しを継続的にサポートするフォローアップ体制を整えています。「つくって終わり」ではなく、経営指針を日々の経営に活かすことを目指します。
+          </p>
+        </div>
+
+        <div class="bg-bg-gray rounded-lg border border-border p-8">
+          <h3 class="text-xl font-bold text-text mb-6">全6回カリキュラム</h3>
+          <div class="space-y-4">
+            <div class="flex items-start gap-4">
+              <span class="flex-shrink-0 w-10 h-10 bg-primary text-white font-bold rounded-full flex items-center justify-center text-sm">1</span>
+              <div>
+                <p class="font-bold text-text">オリエンテーション・自社分析</p>
+                <p class="text-sm text-text-light">自社の現状を客観的に把握し、課題を明確にします。</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="flex-shrink-0 w-10 h-10 bg-primary text-white font-bold rounded-full flex items-center justify-center text-sm">2</span>
+              <div>
+                <p class="font-bold text-text">経営理念の策定</p>
+                <p class="text-sm text-text-light">自社の存在意義を言語化し、経営の土台となる理念を作ります。</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="flex-shrink-0 w-10 h-10 bg-primary text-white font-bold rounded-full flex items-center justify-center text-sm">3</span>
+              <div>
+                <p class="font-bold text-text">10年ビジョンの策定</p>
+                <p class="text-sm text-text-light">自社の将来あるべき姿を描き、長期的な方向性を定めます。</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="flex-shrink-0 w-10 h-10 bg-primary text-white font-bold rounded-full flex items-center justify-center text-sm">4</span>
+              <div>
+                <p class="font-bold text-text">経営方針の策定</p>
+                <p class="text-sm text-text-light">ビジョン実現に向けた具体的な方針を決定します。</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="flex-shrink-0 w-10 h-10 bg-primary text-white font-bold rounded-full flex items-center justify-center text-sm">5</span>
+              <div>
+                <p class="font-bold text-text">経営計画の策定</p>
+                <p class="text-sm text-text-light">数値目標を含む具体的なアクションプランを策定します。</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="flex-shrink-0 w-10 h-10 bg-primary text-white font-bold rounded-full flex items-center justify-center text-sm">6</span>
+              <div>
+                <p class="font-bold text-text">経営指針発表会</p>
+                <p class="text-sm text-text-light">完成した経営指針を会員の前で発表し、フィードバックを受けます。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 就職支援活動 ========== -->
+  <section class="py-16 md:py-20 bg-bg-gray">
+    <div class="max-w-6xl mx-auto px-4">
+      <SectionHeading title="就職支援活動" />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-lg shadow-sm border border-border p-8">
+          <div class="icon-circle mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-text mb-3">合同企業説明会</h3>
+          <p class="text-text-light leading-relaxed mb-4">
+            地域の大学・専門学校の学生や求職者を対象とした合同企業説明会を年に1〜2回開催しています。大企業にはない中小企業ならではの魅力を直接伝える場として、毎回多くの学生が参加しています。
+          </p>
+          <CheckList items={["企業ブース出展による直接的なPR", "学生との個別面談の機会", "会員企業同士の合同開催で集客力アップ"]} />
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm border border-border p-8">
+          <div class="icon-circle mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-text mb-3">学校訪問・連携活動</h3>
+          <p class="text-text-light leading-relaxed mb-4">
+            地域の高校・大学・専門学校を訪問し、中小企業の仕事や経営者の想いを直接伝える活動を行っています。キャリア教育への協力や、インターンシップの受け入れも積極的に実施しています。
+          </p>
+          <CheckList items={["キャリア教育授業への講師派遣", "インターンシップ受け入れの仲介", "就職担当教員との情報交換会"]} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 各種研修メニュー ========== -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <SectionHeading title="各種研修メニュー" />
+
+      <p class="text-text-light text-center leading-relaxed max-w-3xl mx-auto mb-10">
+        同友会では、経営者だけでなく社員の成長も支援するための研修プログラムを多数ご用意しています。会員企業は特別料金でご参加いただけます。
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <FeatureCard
+          title="新入社員研修"
+          description="社会人としての基礎力を身につける研修。ビジネスマナー、コミュニケーション、仕事の進め方を学びます。"
+          icon='<svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>'
+        />
+
+        <FeatureCard
+          title="幹部社員研修"
+          description="次世代リーダーを育成する研修。マネジメント力、問題解決力、部下育成スキルを磨きます。"
+          icon='<svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>'
+        />
+
+        <FeatureCard
+          title="財務研修"
+          description="決算書の読み方から資金繰り管理まで、経営に必要な財務知識を実践的に学びます。"
+          icon='<svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>'
+        />
+
+        <FeatureCard
+          title="IT活用研修"
+          description="DX推進やクラウドツール活用など、中小企業のIT化を支援する実践的な研修です。"
+          icon='<svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>'
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 多様な人財雇用支援 ========== -->
+  <section class="py-16 md:py-20 bg-bg-gray">
+    <div class="max-w-6xl mx-auto px-4">
+      <SectionHeading title="多様な人財雇用支援" />
+
+      <p class="text-text-light text-center leading-relaxed max-w-3xl mx-auto mb-10">
+        中小企業が多様な人財を受け入れ、活躍できる職場づくりを推進するための情報提供・相談支援を行っています。一人ひとりの個性と能力を活かす経営は、企業の成長力を高めます。
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow-sm border border-border p-8">
+          <div class="icon-circle mb-5">
+            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-text mb-3">障がい者雇用支援</h3>
+          <p class="text-text-light text-sm leading-relaxed mb-4">
+            障がいのある方が安心して働ける環境づくりをサポートします。先進企業の事例紹介、助成金制度の案内、就労支援機関との連携など、実践的な情報を提供しています。
+          </p>
+          <ul class="space-y-1 text-sm text-text-light">
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span>
+              雇用事例の共有・勉強会
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span>
+              助成金・制度の情報提供
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span>
+              支援機関との連携サポート
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm border border-border p-8">
+          <div class="icon-circle mb-5">
+            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-text mb-3">外国人雇用支援</h3>
+          <p class="text-text-light text-sm leading-relaxed mb-4">
+            外国人材の採用から定着まで、トータルにサポートします。在留資格の基礎知識、多文化共生の職場づくり、日本語教育の支援など、幅広い情報を提供しています。
+          </p>
+          <ul class="space-y-1 text-sm text-text-light">
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span>
+              在留資格・法制度の勉強会
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span>
+              受け入れ企業の事例紹介
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span>
+              多文化共生の職場づくり支援
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm border border-border p-8">
+          <div class="icon-circle mb-5">
+            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-text mb-3">シニア・女性活躍支援</h3>
+          <p class="text-text-light text-sm leading-relaxed mb-4">
+            シニア人材や女性の活躍推進に取り組む企業を支援します。柔軟な働き方の導入、キャリア支援、ワークライフバランスの実現に向けた取り組みをサポートしています。
+          </p>
+          <ul class="space-y-1 text-sm text-text-light">
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span>
+              柔軟な働き方の導入事例
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span>
+              女性経営者交流会の開催
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span>
+              定年延長・再雇用制度の情報提供
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <CTASection
+    title="支援サービスについてのご相談"
+    description="各支援プログラムの詳細や参加方法については、お気軽にお問い合わせください。会員でない方もまずはご相談いただけます。"
+  />
+
+</BaseLayout>
