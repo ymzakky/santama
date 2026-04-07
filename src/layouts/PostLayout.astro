@@ -2,7 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import ShareButtons from '../components/ShareButtons.astro';
-import { getCategoryLabel } from '../lib/mockData';
+import { getCategoryLabel, categoryLabels } from '../lib/mockData';
 
 interface Props {
   title: string;
@@ -13,13 +13,6 @@ interface Props {
 
 const { title, publishedAt, category, body } = Astro.props;
 const url = Astro.url.href;
-
-const categoryLabels: Record<string, string> = {
-  news2022: '2022',
-  news2023: '2023',
-  news2024: '2024',
-  news2025: '2025',
-};
 ---
 
 <BaseLayout title={title}>

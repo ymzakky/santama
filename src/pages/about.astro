@@ -1,6 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+import HeroSection from '../components/HeroSection.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CTASection from '../components/CTASection.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import OrgChart from '../components/OrgChart.astro';
 ---
 
 <BaseLayout title="三多摩支部とは" description="東京中小企業家同友会 三多摩支部の概要、活動理念、年間スケジュールをご紹介します。">
@@ -8,49 +13,31 @@ import Breadcrumb from '../components/Breadcrumb.astro';
   <Breadcrumb items={[{ label: '三多摩支部とは' }]} />
 
   <!-- ========== Hero ========== -->
-  <section class="bg-gradient-to-br from-primary via-primary-dark to-emerald-800 py-16 md:py-24">
-    <div class="max-w-4xl mx-auto px-4 text-center text-white">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">三多摩支部とは</h1>
-      <p class="text-lg md:text-xl text-white/90 leading-relaxed">
-        東京都多摩地域の中小企業経営者が集い、<br class="hidden md:inline" />
-        互いに学び合い、共に成長する場です。
-      </p>
-    </div>
-  </section>
+  <HeroSection title="三多摩支部とは" subtitle="東京都多摩地域の中小企業経営者が集い、互いに学び合い、共に成長する場です。" />
 
   <!-- ========== 3つの魅力 ========== -->
   <section class="py-16 md:py-20 bg-white">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-text text-center mb-2">3つの魅力</h2>
-      <div class="w-16 h-1 bg-primary mx-auto mb-10 rounded"></div>
+      <SectionHeading title="3つの魅力" />
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- 学びの場 -->
-        <div class="bg-bg-gray rounded-lg p-8 text-center border border-border hover:shadow-md transition-shadow">
-          <div class="w-20 h-20 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-          </div>
-          <h3 class="text-xl font-bold text-text mb-3">学びの場</h3>
-          <p class="text-text-light leading-relaxed">毎月の例会や経営指針セミナーを通じて、経営の基本から実践的な課題解決まで体系的に学ぶことができます。会員同士のグループ討論では、多様な視点から新たな気づきが得られます。</p>
-        </div>
+        <FeatureCard
+          title="学びの場"
+          description="毎月の例会や経営指針セミナーを通じて、経営の基本から実践的な課題解決まで体系的に学ぶことができます。会員同士のグループ討論では、多様な視点から新たな気づきが得られます。"
+          icon='<svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>'
+        />
 
-        <!-- つながり -->
-        <div class="bg-bg-gray rounded-lg p-8 text-center border border-border hover:shadow-md transition-shadow">
-          <div class="w-20 h-20 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-          </div>
-          <h3 class="text-xl font-bold text-text mb-3">つながり</h3>
-          <p class="text-text-light leading-relaxed">業種・業態を超えた40社以上の経営者ネットワーク。経営者同士だからこそ本音で語り合える仲間が見つかります。懇親会やイベントを通じたビジネスパートナーとの出会いも魅力です。</p>
-        </div>
+        <FeatureCard
+          title="つながり"
+          description="業種・業態を超えた40社以上の経営者ネットワーク。経営者同士だからこそ本音で語り合える仲間が見つかります。懇親会やイベントを通じたビジネスパートナーとの出会いも魅力です。"
+          icon='<svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>'
+        />
 
-        <!-- 支援体制 -->
-        <div class="bg-bg-gray rounded-lg p-8 text-center border border-border hover:shadow-md transition-shadow">
-          <div class="w-20 h-20 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-          </div>
-          <h3 class="text-xl font-bold text-text mb-3">支援体制</h3>
-          <p class="text-text-light leading-relaxed">共済制度や福利厚生サービス、経営相談、専門家紹介など、中小企業の経営基盤を強化する支援サービスが充実。行政への政策提言活動にも力を入れています。</p>
-        </div>
+        <FeatureCard
+          title="支援体制"
+          description="共済制度や福利厚生サービス、経営相談、専門家紹介など、中小企業の経営基盤を強化する支援サービスが充実。行政への政策提言活動にも力を入れています。"
+          icon='<svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>'
+        />
       </div>
     </div>
   </section>
@@ -58,8 +45,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
   <!-- ========== 同友会の位置づけ ========== -->
   <section class="py-16 md:py-20 bg-bg-gray">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-text text-center mb-2">同友会の位置づけ</h2>
-      <div class="w-16 h-1 bg-primary mx-auto mb-10 rounded"></div>
+      <SectionHeading title="同友会の位置づけ" />
 
       <div class="bg-white rounded-lg shadow-sm border border-border p-8 md:p-10">
         <p class="text-text-light leading-relaxed mb-6">
@@ -72,25 +58,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
           <strong class="text-text">三多摩支部</strong>は、東京同友会の支部の一つとして、東京都の多摩地域（立川市・八王子市・多摩市・町田市・府中市など）を中心に活動しています。地域密着型の支部として、多摩地域の中小企業経営者が気軽に参加できる例会やイベントを毎月開催しています。
         </p>
 
-        <div class="mt-8 bg-primary-light rounded-lg p-6">
-          <h3 class="font-bold text-text mb-3">組織構成</h3>
-          <div class="flex flex-col md:flex-row items-center gap-3 text-center">
-            <div class="bg-white rounded-lg px-6 py-3 border border-border">
-              <p class="text-sm text-text-light">全国組織</p>
-              <p class="font-bold text-text">中小企業家同友会<br />全国協議会</p>
-            </div>
-            <svg class="w-6 h-6 text-primary rotate-90 md:rotate-0 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            <div class="bg-white rounded-lg px-6 py-3 border border-border">
-              <p class="text-sm text-text-light">都道府県組織</p>
-              <p class="font-bold text-text">東京中小企業家<br />同友会</p>
-            </div>
-            <svg class="w-6 h-6 text-primary rotate-90 md:rotate-0 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            <div class="bg-primary text-white rounded-lg px-6 py-3">
-              <p class="text-sm text-white/80">地域支部</p>
-              <p class="font-bold">三多摩支部</p>
-            </div>
-          </div>
-        </div>
+        <OrgChart />
       </div>
     </div>
   </section>
@@ -98,8 +66,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
   <!-- ========== 年間スケジュール ========== -->
   <section class="py-16 md:py-20 bg-white">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-text text-center mb-2">年間スケジュール</h2>
-      <div class="w-16 h-1 bg-primary mx-auto mb-10 rounded"></div>
+      <SectionHeading title="年間スケジュール" />
 
       <div class="space-y-4">
         <div class="flex items-start gap-4 bg-bg-gray rounded-lg p-5 border border-border">
@@ -178,15 +145,9 @@ import Breadcrumb from '../components/Breadcrumb.astro';
   </section>
 
   <!-- ========== CTA ========== -->
-  <section class="py-16 md:py-20 bg-primary">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">まずはお気軽にお問い合わせください</h2>
-      <p class="text-white/90 text-lg mb-8">三多摩支部の活動に興味をお持ちの方は、ぜひ例会へのゲスト参加をご検討ください。経営者同士で学び合う場を、実際に体験していただけます。</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contact/" class="inline-block bg-white text-primary font-bold py-3 px-8 rounded-lg hover:bg-primary-light transition-colors text-lg">お問い合わせ</a>
-        <a href="/welcome/" class="inline-block bg-transparent text-white font-bold py-3 px-8 rounded-lg border-2 border-white hover:bg-white/10 transition-colors text-lg">入会案内はこちら</a>
-      </div>
-    </div>
-  </section>
+  <CTASection
+    title="まずはお気軽にお問い合わせください"
+    description="三多摩支部の活動に興味をお持ちの方は、ぜひ例会へのゲスト参加をご検討ください。経営者同士で学び合う場を、実際に体験していただけます。"
+  />
 
 </BaseLayout>

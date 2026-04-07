@@ -1,6 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+import HeroSection from '../components/HeroSection.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CTASection from '../components/CTASection.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import CheckList from '../components/CheckList.astro';
 ---
 
 <BaseLayout title="経営者支援サービス" description="東京中小企業家同友会 三多摩支部が提供する経営指針セミナー、就職支援、各種研修、多様な人財雇用支援についてご紹介します。">
@@ -8,21 +13,12 @@ import Breadcrumb from '../components/Breadcrumb.astro';
   <Breadcrumb items={[{ label: '経営者支援サービス' }]} />
 
   <!-- ========== Hero ========== -->
-  <section class="bg-gradient-to-br from-primary via-primary-dark to-emerald-800 py-16 md:py-24">
-    <div class="max-w-4xl mx-auto px-4 text-center text-white">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">経営者支援サービス</h1>
-      <p class="text-lg md:text-xl text-white/90 leading-relaxed">
-        中小企業の経営課題を解決するための<br class="hidden md:inline" />
-        多彩な支援プログラムをご用意しています。
-      </p>
-    </div>
-  </section>
+  <HeroSection title="経営者支援サービス" subtitle="中小企業の経営課題を解決するための多彩な支援プログラムをご用意しています。" />
 
   <!-- ========== 経営指針成文化セミナー ========== -->
   <section class="py-16 md:py-20 bg-white">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-text text-center mb-2">経営指針成文化セミナー</h2>
-      <div class="w-16 h-1 bg-primary mx-auto mb-10 rounded"></div>
+      <SectionHeading title="経営指針成文化セミナー" />
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
         <div>
@@ -91,56 +87,29 @@ import Breadcrumb from '../components/Breadcrumb.astro';
   <!-- ========== 就職支援活動 ========== -->
   <section class="py-16 md:py-20 bg-bg-gray">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-text text-center mb-2">就職支援活動</h2>
-      <div class="w-16 h-1 bg-primary mx-auto mb-10 rounded"></div>
+      <SectionHeading title="就職支援活動" />
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="bg-white rounded-lg shadow-sm border border-border p-8">
-          <div class="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mb-6">
+          <div class="icon-circle mb-6">
             <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </div>
           <h3 class="text-xl font-bold text-text mb-3">合同企業説明会</h3>
           <p class="text-text-light leading-relaxed mb-4">
             地域の大学・専門学校の学生や求職者を対象とした合同企業説明会を年に1〜2回開催しています。大企業にはない中小企業ならではの魅力を直接伝える場として、毎回多くの学生が参加しています。
           </p>
-          <ul class="space-y-2">
-            <li class="flex items-center gap-2 text-text-light text-sm">
-              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-              企業ブース出展による直接的なPR
-            </li>
-            <li class="flex items-center gap-2 text-text-light text-sm">
-              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-              学生との個別面談の機会
-            </li>
-            <li class="flex items-center gap-2 text-text-light text-sm">
-              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-              会員企業同士の合同開催で集客力アップ
-            </li>
-          </ul>
+          <CheckList items={["企業ブース出展による直接的なPR", "学生との個別面談の機会", "会員企業同士の合同開催で集客力アップ"]} />
         </div>
 
         <div class="bg-white rounded-lg shadow-sm border border-border p-8">
-          <div class="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mb-6">
+          <div class="icon-circle mb-6">
             <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
           </div>
           <h3 class="text-xl font-bold text-text mb-3">学校訪問・連携活動</h3>
           <p class="text-text-light leading-relaxed mb-4">
             地域の高校・大学・専門学校を訪問し、中小企業の仕事や経営者の想いを直接伝える活動を行っています。キャリア教育への協力や、インターンシップの受け入れも積極的に実施しています。
           </p>
-          <ul class="space-y-2">
-            <li class="flex items-center gap-2 text-text-light text-sm">
-              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-              キャリア教育授業への講師派遣
-            </li>
-            <li class="flex items-center gap-2 text-text-light text-sm">
-              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-              インターンシップ受け入れの仲介
-            </li>
-            <li class="flex items-center gap-2 text-text-light text-sm">
-              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-              就職担当教員との情報交換会
-            </li>
-          </ul>
+          <CheckList items={["キャリア教育授業への講師派遣", "インターンシップ受け入れの仲介", "就職担当教員との情報交換会"]} />
         </div>
       </div>
     </div>
@@ -149,45 +118,36 @@ import Breadcrumb from '../components/Breadcrumb.astro';
   <!-- ========== 各種研修メニュー ========== -->
   <section class="py-16 md:py-20 bg-white">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-text text-center mb-2">各種研修メニュー</h2>
-      <div class="w-16 h-1 bg-primary mx-auto mb-10 rounded"></div>
+      <SectionHeading title="各種研修メニュー" />
 
       <p class="text-text-light text-center leading-relaxed max-w-3xl mx-auto mb-10">
         同友会では、経営者だけでなく社員の成長も支援するための研修プログラムを多数ご用意しています。会員企業は特別料金でご参加いただけます。
       </p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-bg-gray rounded-lg p-6 border border-border text-center hover:shadow-md transition-shadow">
-          <div class="w-14 h-14 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-text mb-2">新入社員研修</h3>
-          <p class="text-sm text-text-light leading-relaxed">社会人としての基礎力を身につける研修。ビジネスマナー、コミュニケーション、仕事の進め方を学びます。</p>
-        </div>
+        <FeatureCard
+          title="新入社員研修"
+          description="社会人としての基礎力を身につける研修。ビジネスマナー、コミュニケーション、仕事の進め方を学びます。"
+          icon='<svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>'
+        />
 
-        <div class="bg-bg-gray rounded-lg p-6 border border-border text-center hover:shadow-md transition-shadow">
-          <div class="w-14 h-14 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-text mb-2">幹部社員研修</h3>
-          <p class="text-sm text-text-light leading-relaxed">次世代リーダーを育成する研修。マネジメント力、問題解決力、部下育成スキルを磨きます。</p>
-        </div>
+        <FeatureCard
+          title="幹部社員研修"
+          description="次世代リーダーを育成する研修。マネジメント力、問題解決力、部下育成スキルを磨きます。"
+          icon='<svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>'
+        />
 
-        <div class="bg-bg-gray rounded-lg p-6 border border-border text-center hover:shadow-md transition-shadow">
-          <div class="w-14 h-14 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-text mb-2">財務研修</h3>
-          <p class="text-sm text-text-light leading-relaxed">決算書の読み方から資金繰り管理まで、経営に必要な財務知識を実践的に学びます。</p>
-        </div>
+        <FeatureCard
+          title="財務研修"
+          description="決算書の読み方から資金繰り管理まで、経営に必要な財務知識を実践的に学びます。"
+          icon='<svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>'
+        />
 
-        <div class="bg-bg-gray rounded-lg p-6 border border-border text-center hover:shadow-md transition-shadow">
-          <div class="w-14 h-14 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-text mb-2">IT活用研修</h3>
-          <p class="text-sm text-text-light leading-relaxed">DX推進やクラウドツール活用など、中小企業のIT化を支援する実践的な研修です。</p>
-        </div>
+        <FeatureCard
+          title="IT活用研修"
+          description="DX推進やクラウドツール活用など、中小企業のIT化を支援する実践的な研修です。"
+          icon='<svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>'
+        />
       </div>
     </div>
   </section>
@@ -195,8 +155,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
   <!-- ========== 多様な人財雇用支援 ========== -->
   <section class="py-16 md:py-20 bg-bg-gray">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-text text-center mb-2">多様な人財雇用支援</h2>
-      <div class="w-16 h-1 bg-primary mx-auto mb-10 rounded"></div>
+      <SectionHeading title="多様な人財雇用支援" />
 
       <p class="text-text-light text-center leading-relaxed max-w-3xl mx-auto mb-10">
         中小企業が多様な人財を受け入れ、活躍できる職場づくりを推進するための情報提供・相談支援を行っています。一人ひとりの個性と能力を活かす経営は、企業の成長力を高めます。
@@ -204,7 +163,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="bg-white rounded-lg shadow-sm border border-border p-8">
-          <div class="w-14 h-14 bg-primary-light rounded-full flex items-center justify-center mb-5">
+          <div class="icon-circle mb-5">
             <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
           </div>
           <h3 class="text-lg font-bold text-text mb-3">障がい者雇用支援</h3>
@@ -228,7 +187,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
         </div>
 
         <div class="bg-white rounded-lg shadow-sm border border-border p-8">
-          <div class="w-14 h-14 bg-primary-light rounded-full flex items-center justify-center mb-5">
+          <div class="icon-circle mb-5">
             <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </div>
           <h3 class="text-lg font-bold text-text mb-3">外国人雇用支援</h3>
@@ -252,7 +211,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
         </div>
 
         <div class="bg-white rounded-lg shadow-sm border border-border p-8">
-          <div class="w-14 h-14 bg-primary-light rounded-full flex items-center justify-center mb-5">
+          <div class="icon-circle mb-5">
             <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
           </div>
           <h3 class="text-lg font-bold text-text mb-3">シニア・女性活躍支援</h3>
@@ -279,15 +238,9 @@ import Breadcrumb from '../components/Breadcrumb.astro';
   </section>
 
   <!-- ========== CTA ========== -->
-  <section class="py-16 md:py-20 bg-primary">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">支援サービスについてのご相談</h2>
-      <p class="text-white/90 text-lg mb-8">各支援プログラムの詳細や参加方法については、お気軽にお問い合わせください。会員でない方もまずはご相談いただけます。</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contact/" class="inline-block bg-white text-primary font-bold py-3 px-8 rounded-lg hover:bg-primary-light transition-colors text-lg">お問い合わせ</a>
-        <a href="/welcome/" class="inline-block bg-transparent text-white font-bold py-3 px-8 rounded-lg border-2 border-white hover:bg-white/10 transition-colors text-lg">入会案内はこちら</a>
-      </div>
-    </div>
-  </section>
+  <CTASection
+    title="支援サービスについてのご相談"
+    description="各支援プログラムの詳細や参加方法については、お気軽にお問い合わせください。会員でない方もまずはご相談いただけます。"
+  />
 
 </BaseLayout>

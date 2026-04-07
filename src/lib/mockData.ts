@@ -171,14 +171,38 @@ export function getLatestPosts(count: number): Post[] {
   return [...posts].sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()).slice(0, count);
 }
 
+export const categoryLabels: Record<string, string> = {
+  news2022: '2022',
+  news2023: '2023',
+  news2024: '2024',
+  news2025: '2025',
+};
+
+export const categoryFullLabels: Record<string, string> = {
+  news2022: '2022年度のお知らせ',
+  news2023: '2023年度のお知らせ',
+  news2024: '2024年度のお知らせ',
+  news2025: '2025年度のお知らせ',
+};
+
 export function getCategoryLabel(category: string): string {
-  const labels: Record<string, string> = {
-    news2022: '2022年度のお知らせ',
-    news2023: '2023年度のお知らせ',
-    news2024: '2024年度のお知らせ',
-    news2025: '2025年度のお知らせ',
-  };
-  return labels[category] || category;
+  return categoryFullLabels[category] || category;
 }
 
 export const categories = ['news2025', 'news2024', 'news2023', 'news2022'];
+
+export const navItems = [
+  { label: 'トップ', href: '/' },
+  { label: '三多摩支部とは', href: '/about/' },
+  { label: '経営者の気づきとまなび', href: '/posts/' },
+  { label: '経営者支援サービス', href: '/our-services/' },
+  { label: 'イベント', href: '/event/' },
+  { label: '会員企業一覧', href: '/list/' },
+  { label: '東京同友会', href: '/tokyo-doyu/' },
+];
+
+export const footerNavItems = [
+  ...navItems,
+  { label: '入会案内', href: '/welcome/' },
+  { label: 'お問い合わせ', href: '/contact/' },
+];
