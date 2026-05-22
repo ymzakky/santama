@@ -45,6 +45,7 @@ export const categoryLabels: Record<string, string> = {
   news2023: '2023',
   news2024: '2024',
   news2025: '2025',
+  news2026: '2026',
 };
 
 export const categoryFullLabels: Record<string, string> = {
@@ -52,13 +53,14 @@ export const categoryFullLabels: Record<string, string> = {
   news2023: '2023年度のお知らせ',
   news2024: '2024年度のお知らせ',
   news2025: '2025年度のお知らせ',
+  news2026: '2026年度のお知らせ',
 };
 
 export function getCategoryLabel(category: string): string {
   return categoryFullLabels[category] || category;
 }
 
-export const categories = ['news2025', 'news2024', 'news2023', 'news2022'];
+export const categories = ['news2026', 'news2025', 'news2024', 'news2023', 'news2022'];
 
 export const navItems = [
   { label: 'トップ', href: '/' },
