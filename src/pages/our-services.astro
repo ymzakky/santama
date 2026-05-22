@@ -8,12 +8,12 @@ import FeatureCard from '../components/FeatureCard.astro';
 import CheckList from '../components/CheckList.astro';
 ---
 
-<BaseLayout title="経営者支援サービス" description="東京中小企業家同友会 三多摩支部が提供する経営指針セミナー、就職支援、各種研修、多様な人財雇用支援についてご紹介します。">
+<BaseLayout title="経営者支援サービス（東京同友会主催）" description="東京中小企業家同友会が主催する、経営指針成文化セミナー、共同求人活動、各種研修、多様な人財雇用支援についてご紹介します。">
 
-  <Breadcrumb items={[{ label: '経営者支援サービス' }]} />
+  <Breadcrumb items={[{ label: '経営者支援サービス（東京同友会主催）' }]} />
 
   <!-- ========== Hero ========== -->
-  <HeroSection title="経営者支援サービス" subtitle="中小企業の経営課題を解決するための多彩な支援プログラムをご用意しています。" />
+  <HeroSection title="経営者支援サービス（東京同友会主催）" subtitle="支部の活動に加え、本部では委員会活動や各種セミナーを通じて、採用・経営計画策定・人財育成など、経営者ならではの課題解決を支援しています。" />
 
   <!-- ========== 経営指針成文化セミナー ========== -->
   <section class="py-16 md:py-20 bg-white">
@@ -23,10 +23,10 @@ import CheckList from '../components/CheckList.astro';
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
         <div>
           <p class="text-text-light leading-relaxed mb-6">
-            経営指針成文化セミナーは、経営者が自社の経営理念・経営方針・経営計画を体系的に策定するための全6回コースのプログラムです。同友会の中でも最も人気の高いセミナーの一つであり、多くの会員がこのセミナーを通じて経営の羅針盤を手に入れています。
+            経営指針成文化セミナーは、同友会の3つの目的である「<strong class="text-text">よい会社をつくる</strong>」「<strong class="text-text">よい経営者をめざす</strong>」「よい経営環境をつくる」を実現するため、組織経営を前提に経営理念・経営方針・経営計画を体系的に策定するプログラムです。
           </p>
           <p class="text-text-light leading-relaxed mb-6">
-            少人数のグループワーク形式で進行し、参加者同士が互いの経営指針をブラッシュアップし合います。経験豊富な先輩経営者がアドバイザーとして伴走するため、初めての方でも安心して取り組むことができます。
+            少人数のグループワーク形式で進行し、参加者同士が互いの経営指針をブラッシュアップし合います。経験豊富な先輩経営者がアドバイザーとして伴走するため、自社の経営の方向性に迷いがある方でも、安心して取り組むことができます。
           </p>
           <p class="text-text-light leading-relaxed">
             セミナー修了後も、経営指針の実践と見直しを継続的にサポートするフォローアップ体制を整えています。「つくって終わり」ではなく、経営指針を日々の経営に活かすことを目指します。
@@ -84,10 +84,14 @@ import CheckList from '../components/CheckList.astro';
     </div>
   </section>
 
-  <!-- ========== 就職支援活動 ========== -->
+  <!-- ========== 共同求人活動 ========== -->
   <section class="py-16 md:py-20 bg-bg-gray">
     <div class="max-w-6xl mx-auto px-4">
-      <SectionHeading title="就職支援活動" />
+      <SectionHeading title="共同求人活動" />
+
+      <p class="text-text-light text-center leading-relaxed max-w-3xl mx-auto mb-10">
+        個社単独ではできないことを、会員企業同士が共同で取り組むことで実現する活動です。単に人を採用するだけでなく、優秀な人財の確保と育成を着実に進め、「よい会社をつくる」という同友会の目的につなげていきます。
+      </p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="bg-white rounded-lg shadow-sm border border-border p-8">
@@ -96,7 +100,7 @@ import CheckList from '../components/CheckList.astro';
           </div>
           <h3 class="text-xl font-bold text-text mb-3">合同企業説明会</h3>
           <p class="text-text-light leading-relaxed mb-4">
-            地域の大学・専門学校の学生や求職者を対象とした合同企業説明会を年に1〜2回開催しています。大企業にはない中小企業ならではの魅力を直接伝える場として、毎回多くの学生が参加しています。
+            会員企業が合同で参加する企業説明会を開催。大企業にはない中小企業ならではの魅力を、経営者自らが直接学生に伝える場です。
           </p>
           <CheckList items={["企業ブース出展による直接的なPR", "学生との個別面談の機会", "会員企業同士の合同開催で集客力アップ"]} />
         </div>
@@ -105,11 +109,11 @@ import CheckList from '../components/CheckList.astro';
           <div class="icon-circle mb-6">
             <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
           </div>
-          <h3 class="text-xl font-bold text-text mb-3">学校訪問・連携活動</h3>
+          <h3 class="text-xl font-bold text-text mb-3">学校訪問・情報交換会</h3>
           <p class="text-text-light leading-relaxed mb-4">
-            地域の高校・大学・専門学校を訪問し、中小企業の仕事や経営者の想いを直接伝える活動を行っています。キャリア教育への協力や、インターンシップの受け入れも積極的に実施しています。
+            学校への訪問、学校との情報交換会、学生と経営者が交流するイベント、インターンシップの受け入れまで、教育機関と継続的に連携し、地域の人財育成に取り組んでいます。
           </p>
-          <CheckList items={["キャリア教育授業への講師派遣", "インターンシップ受け入れの仲介", "就職担当教員との情報交換会"]} />
+          <CheckList items={["学校訪問・キャリア教育授業への協力", "学校との情報交換会の開催", "学生と経営者の交流イベント／インターンシップ"]} />
         </div>
       </div>
     </div>
