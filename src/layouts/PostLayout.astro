@@ -2,56 +2,188 @@
 import BaseLayout from './BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import ShareButtons from '../components/ShareButtons.astro';
-import { getCategoryLabel, categoryLabels } from '../lib/microcms';
+import { categoryLabels } from '../lib/microcms';
 import { withBase } from '../lib/path';
+import { formatDate } from '../lib/date';
+import type { MicroCMSImage } from 'microcms-js-sdk';
 
 interface Props {
   title: string;
   publishedAt: string;
   category: string;
   body: string;
+  excerpt?: string;
+  eyecatch?: MicroCMSImage;
+  subtitle?: string;
+  eventDate?: string;
+  reporter?: string;
+  reporterCompany?: string;
+  reporterBusiness?: string;
 }
 
-const { title, publishedAt, category, body } = Astro.props;
+const {
+  title,
+  publishedAt,
+  category,
+  body,
+  excerpt,
+  eyecatch,
+  subtitle,
+  eventDate,
+  reporter,
+  reporterCompany,
+  reporterBusiness,
+} = Astro.props;
+
 const url = Astro.url.href;
+const formattedPublishedAt = formatDate(publishedAt);
+const formattedEventDate = formatDate(eventDate);
+const hasReporterInfo = !!(reporter || reporterCompany || reporterBusiness);
 ---
 
 <BaseLayout title={title}>
   <Breadcrumb items={[
-    { label: '経営者の気づきとまなび', href: '/posts/' },
-    { label: title }
+    { label: '最新活動状況', href: '/posts/' },
+    { label: title },
   ]} />
 
-  <article class="max-w-3xl mx-auto px-4 py-10">
-    <div class="mb-6">
-      <div class="flex items-center gap-3 mb-3">
-        <time class="text-sm text-text-light">{publishedAt}</time>
-        <span class="text-xs bg-primary-light text-primary px-2 py-0.5 rounded font-medium">
-          {categoryLabels[category] || category}
-        </span>
+  <article class="max-w-3xl mx-auto px-4 py-10 md:py-14">
+
+    <!-- ===== カテゴリラベル + 日付 ===== -->
+    <div class="flex items-center gap-3 mb-4">
+      <span class="text-xs bg-orange text-white px-3 py-1 rounded-full font-bold">
+        {categoryLabels[category] || category}
+      </span>
+      <time class="text-sm text-text-light">{formattedPublishedAt}</time>
+    </div>
+
+    <!-- ===== タイトル (左にオレンジ縦帯) ===== -->
+    <h1 class="text-xl md:text-2xl font-bold leading-snug text-accent mb-4 pl-4 border-l-4 border-orange">
+      {title}
+    </h1>
+
+    <!-- ===== サブタイトル ===== -->
+    {subtitle && (
+      <p class="text-base md:text-lg text-primary font-bold mb-6 leading-relaxed">
+        {subtitle}
+      </p>
+    )}
+
+    <!-- ===== 報告者情報ボックス (microCMSでフィールド入力時のみ表示) ===== -->
+    {hasReporterInfo && (
+      <div class="bg-bg-gray border-l-4 border-primary rounded-r p-5 mb-8">
+        <dl class="grid grid-cols-1 sm:grid-cols-[6rem_1fr] gap-x-4 gap-y-2 text-sm">
+          {reporter && (
+            <>
+              <dt class="font-bold text-accent">報告者</dt>
+              <dd class="text-text">{reporter}</dd>
+            </>
+          )}
+          {reporterCompany && (
+            <>
+              <dt class="font-bold text-accent">所属企業</dt>
+              <dd class="text-text">{reporterCompany}</dd>
+            </>
+          )}
+          {reporterBusiness && (
+            <>
+              <dt class="font-bold text-accent">事業内容</dt>
+              <dd class="text-text">{reporterBusiness}</dd>
+            </>
+          )}
+          {formattedEventDate && (
+            <>
+              <dt class="font-bold text-accent">例会開催日</dt>
+              <dd class="text-text">{formattedEventDate}</dd>
+            </>
+          )}
+        </dl>
       </div>
-      <h1 class="text-2xl md:text-3xl font-bold leading-tight">{title}</h1>
-    </div>
+    )}
 
-    <div class="aspect-video bg-bg-gray rounded-lg flex items-center justify-center mb-8">
-      <svg class="w-20 h-20 text-border" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-      </svg>
-    </div>
+    <!-- ===== アイキャッチ画像 ===== -->
+    {eyecatch ? (
+      <figure class="mb-8">
+        <img
+          src={eyecatch.url}
+          alt={title}
+          width={eyecatch.width}
+          height={eyecatch.height}
+          class="w-full rounded-lg shadow-sm"
+          loading="lazy"
+        />
+      </figure>
+    ) : (
+      <div class="aspect-video bg-bg-gray rounded-lg flex items-center justify-center mb-8">
+        <svg class="w-20 h-20 text-border" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      </div>
+    )}
 
-    <div class="prose" set:html={body} />
+    <!-- ===== リード文 (excerpt) ===== -->
+    {excerpt && (
+      <p class="text-text leading-loose mb-8 pb-6 border-b border-border">
+        {excerpt}
+      </p>
+    )}
 
-    <div class="mt-10 pt-6 border-t border-border">
+    <!-- ===== 本文 (microCMSリッチエディタHTML) ===== -->
+    <div class="prose post-body" set:html={body} />
+
+    <!-- ===== SNSシェア ===== -->
+    <div class="mt-12 pt-6 border-t border-border">
+      <p class="text-sm font-bold text-accent mb-3 text-center">この内容をシェアする</p>
       <ShareButtons url={url} title={title} />
     </div>
 
+    <!-- ===== 一覧に戻る ===== -->
     <div class="mt-10 text-center">
-      <a href={withBase('/posts/')} class="inline-flex items-center gap-2 px-6 py-3 border border-border rounded hover:bg-bg-gray transition-colors text-sm">
+      <a href={withBase('/posts/')} class="inline-flex items-center gap-2 px-6 py-3 border-2 border-primary text-primary font-bold rounded hover:bg-primary hover:text-white transition-colors text-sm">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
-        記事一覧に戻る
+        最新活動状況の一覧に戻る
       </a>
     </div>
   </article>
 </BaseLayout>
+
+<style is:global>
+  /* 記事本文の小見出し (microCMSで <h2>■講演概要</h2> のように書かれた箇所を装飾) */
+  .post-body h2 {
+    font-size: 1.25rem;
+    color: var(--color-accent);
+    border-left: 6px solid var(--color-orange);
+    padding-left: 0.75rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: none;
+  }
+  .post-body h3 {
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary-light);
+    padding-bottom: 0.25rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .post-body img {
+    border-radius: 0.5rem;
+    margin: 1.5rem auto;
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  .post-body p {
+    margin-bottom: 1.25rem;
+    line-height: 1.9;
+  }
+  .post-body a {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+  .post-body a:hover {
+    color: var(--color-primary-dark);
+  }
+</style>

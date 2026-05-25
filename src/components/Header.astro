@@ -10,11 +10,11 @@ import { withBase } from '../lib/path';
       <a href={withBase('/')} class="flex items-center">
         <img src={withBase('/images/logo-2.png')} alt="東京中小企業家同友会 三多摩支部" class="h-10" />
       </a>
-      <div class="hidden md:flex items-center gap-3">
-        <a href={withBase('/event/')} class="inline-flex items-center px-4 py-2 bg-primary text-white text-sm font-bold rounded hover:bg-primary-dark transition-colors">
+      <div class="hidden md:flex items-center gap-2">
+        <a href={withBase('/welcome/')} class="inline-flex items-center px-4 py-2 bg-cta text-white text-sm font-bold rounded hover:opacity-90 transition-opacity">
           例会お試し参加
         </a>
-        <a href={withBase('/contact/')} class="inline-flex items-center px-4 py-2 border-2 border-primary text-primary text-sm font-bold rounded hover:bg-primary hover:text-white transition-colors">
+        <a href={withBase('/contact/')} class="inline-flex items-center px-4 py-2 bg-orange text-white text-sm font-bold rounded hover:opacity-90 transition-opacity">
           お問い合わせ・入会案内
         </a>
       </div>
@@ -30,10 +30,10 @@ import { withBase } from '../lib/path';
     </div>
     <!-- Navigation -->
     <nav id="main-nav" class="hidden md:block">
-      <ul class="flex items-center justify-center gap-1">
+      <ul class="flex items-center justify-center flex-wrap">
         {navItems.map(item => (
           <li>
-            <a href={withBase(item.href)} class="block px-4 py-3 text-sm font-medium text-text hover:text-primary transition-colors">
+            <a href={withBase(item.href)} class="block px-3 lg:px-4 py-3 text-sm font-medium text-text hover:text-primary transition-colors">
               {item.label}
             </a>
           </li>
@@ -51,8 +51,8 @@ import { withBase } from '../lib/path';
           </li>
         ))}
         <li class="pt-2 space-y-2">
-          <a href={withBase('/event/')} class="block text-center px-4 py-2 bg-primary text-white text-sm font-bold rounded">例会お試し参加</a>
-          <a href={withBase('/contact/')} class="block text-center px-4 py-2 border-2 border-primary text-primary text-sm font-bold rounded">お問い合わせ・入会案内</a>
+          <a href={withBase('/welcome/')} class="block text-center px-4 py-2 bg-cta text-white text-sm font-bold rounded">例会お試し参加</a>
+          <a href={withBase('/contact/')} class="block text-center px-4 py-2 bg-orange text-white text-sm font-bold rounded">お問い合わせ・入会案内</a>
         </li>
       </ul>
     </nav>

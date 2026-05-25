@@ -18,6 +18,12 @@ export interface Post {
   category: string;
   publishedAt: string;
   excerpt: string;
+  // ---- 以下は microCMS 側に追加してもらえれば自動で記事ページに反映される追加フィールド (全て optional) ----
+  subtitle?: string;           // サブタイトル例: "～一人ひとりが輝ける会社づくりの理念とその実践～"
+  eventDate?: string;          // 例会開催日 (公開日と別管理する場合)
+  reporter?: string;           // 報告者名 例: "山田 太郎 氏"
+  reporterCompany?: string;    // 報告者の所属企業 例: "(株)ボンズシップ"
+  reporterBusiness?: string;   // 報告者の業種・事業内容 例: "訪問看護サービス事業"
 }
 
 export interface Member {
@@ -63,13 +69,13 @@ export function getCategoryLabel(category: string): string {
 export const categories = ['news2026', 'news2025', 'news2024', 'news2023', 'news2022'];
 
 export const navItems = [
-  { label: 'トップ', href: '/' },
+  { label: 'Top', href: '/' },
   { label: '三多摩支部とは', href: '/about/' },
-  { label: '経営者の気づきとまなび', href: '/posts/' },
+  { label: '経営者の気づきとまなび', href: '/event/' },
   { label: '経営者支援サービス', href: '/our-services/' },
-  { label: 'イベント', href: '/event/' },
-  { label: '会員企業一覧', href: '/list/' },
-  { label: '東京同友会', href: '/tokyo-doyu/' },
+  { label: '最新活動状況', href: '/posts/' },
+  { label: '会員一覧', href: '/list/' },
+  { label: '東京中小企業家同友会', href: '/tokyo-doyu/' },
 ];
 
 export const footerNavItems = [
@@ -132,7 +138,7 @@ export async function getLatestPosts(count: number): Promise<Post[]> {
     endpoint: 'news',
     queries: { limit: count, orders: '-publishedAt' },
   });
-  return res.contents;
+  return res.contents.map(normalizePost);
 }
 
 export async function getAllMembers(): Promise<Member[]> {

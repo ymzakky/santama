@@ -1,16 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #00a968;
-  --color-primary-dark: #008a54;
-  --color-primary-light: #e6f7f0;
-  --color-accent: #333333;
-  --color-text: #333333;
+  /* メイン: ブランドグリーン rgb(0,153,74) */
+  --color-primary: #00994a;
+  --color-primary-dark: #00703a;
+  --color-primary-light: #e6f5ec;
+  /* セカンダリ: ダークフォレストグリーン — フッターやダーク帯に使用 */
+  --color-accent: #0a4d2a;
+  /* アクセント: 深めのリーフグリーン — タイトルの飾り罫など強調用 (変数名は履歴上 orange を保持) */
+  --color-orange: #558b2f;
+  /* CTAボタン用のティールグリーン */
+  --color-cta: #00897b;
+  --color-cta-dark: #00695c;
+  --color-text: #212121;
   --color-text-light: #666666;
   --color-bg: #ffffff;
-  --color-bg-gray: #f5f5f5;
+  --color-bg-gray: #f7f7f8;
   --color-border: #e0e0e0;
-  --font-sans: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, sans-serif;
+  --font-sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "游ゴシック体", "Yu Gothic", YuGothic, "メイリオ", Meiryo, sans-serif;
 }
 
 html {
@@ -21,6 +28,7 @@ body {
   font-family: var(--font-sans);
   color: var(--color-text);
   line-height: 1.8;
+  font-weight: 400;
 }
 
 .prose h2 {
@@ -111,4 +119,30 @@ body {
 
 .btn-cta-secondary:hover {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 参考サイト風 セクションタイトル: 上にオレンジの英字サブ、下に紺色の和文タイトル */
+.section-title-block {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.section-title-block .sub {
+  display: block;
+  color: var(--color-orange);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+.section-title-block .title {
+  display: inline-block;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+}
+@media (min-width: 768px) {
+  .section-title-block .title {
+    font-size: 2.25rem;
+  }
 }

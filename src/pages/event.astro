@@ -166,23 +166,48 @@ import { withBase } from '../lib/path';
 
       <div class="max-w-4xl mx-auto">
         <p class="text-text-light leading-relaxed text-center mb-10">
-          三多摩支部では、同友会の枠を超えて地域の様々な団体・機関と連携し、中小企業の経営環境向上に取り組んでいます。
+          三多摩支部では、会員同士や他支部との交流以外にも、各種外部団体との交流を積極的に行なっており、地域と連携した活動によるネットワークの拡大、地域に貢献した活動による経営者としての視座の向上を図っています。
         </p>
 
         <div class="space-y-4">
           {([
-            { title: '行政機関との連携', icon: '<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>', desc: '立川市・八王子市・多摩市などの自治体と連携し、中小企業振興政策への提言や、行政主催の産業振興イベントへの参加・協力を行っています。' },
-            { title: '教育機関との交流', icon: '<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>', desc: '地域の大学・高校・専門学校と連携し、キャリア教育への講師派遣、合同企業説明会の開催、インターンシップの受け入れなどを行っています。' },
-            { title: '他支部・他団体との交流', icon: '<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>', desc: '東京同友会の他支部との合同例会や、地域の商工会議所・法人会・異業種交流団体との交流イベントを通じて、より広いネットワークを構築しています。' },
-            { title: '金融機関との関係づくり', icon: '<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>', desc: '地域の信用金庫や地方銀行との情報交換会を実施し、中小企業の資金調達や経営改善に関する相互理解を深めています。' },
+            {
+              title: '中小企業大学校 東京校',
+              url: 'https://www.smrj.go.jp/institute/index.html',
+              icon: '<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>',
+              desc: '経営者、後継者や管理者向けの実践的な研修により、中小企業を支える人材育成の実態について見学、意見交換を実施。',
+            },
+            {
+              title: '嘉悦大学 ビジネス創造学部',
+              url: 'https://www.kaetsu.ac.jp/faculty/business/',
+              icon: '<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>',
+              desc: '「課題解決実践力」を養う学部として実践型講座が開設され、三多摩支部から経営者としての立場で学生向けに講師を派遣。',
+            },
+            {
+              title: 'たま工業交流展',
+              url: 'https://tama-kogyo-koryuten.jp/',
+              icon: '<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>',
+              desc: '多摩地域の中小企業が有する個性豊かな技術や製品が一堂に展示されるイベントに三多摩支部として出展。地域企業とのコミュニケーションの場として活用。',
+            },
           ]).map(item => (
             <div class="bg-white rounded-lg border border-border p-6 flex items-start gap-4">
               <div class="w-12 h-12 bg-primary-light rounded-full flex items-center justify-center flex-shrink-0">
                 <Fragment set:html={item.icon} />
               </div>
-              <div>
+              <div class="flex-1">
                 <h3 class="font-bold text-text mb-1">{item.title}</h3>
-                <p class="text-text-light text-sm leading-relaxed">{item.desc}</p>
+                <p class="text-text-light text-sm leading-relaxed mb-2">{item.desc}</p>
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 text-primary text-sm font-bold hover:text-primary-dark transition-colors"
+                >
+                  公式サイトを見る
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
               </div>
             </div>
           ))}
