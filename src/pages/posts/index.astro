@@ -41,22 +41,50 @@ const categoryFilters = [
       ))}
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {sortedPosts.map((post) => (
-        <PostCard
-          title={post.title}
-          slug={post.slug}
-          category={post.category}
-          year={getFiscalYear(post)}
-          publishedAt={post.publishedAt}
-          excerpt={post.excerpt}
-          eyecatch={post.eyecatch}
-        />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="posts-grid">
+      {sortedPosts.map((post, i) => (
+        <div class="post-item" style={i >= 10 ? 'display:none' : undefined}>
+          <PostCard
+            title={post.title}
+            slug={post.slug}
+            category={post.category}
+            year={getFiscalYear(post)}
+            publishedAt={post.publishedAt}
+            eventDate={post.eventDate}
+            excerpt={post.excerpt}
+            eyecatch={post.eyecatch}
+          />
+        </div>
       ))}
     </div>
+
+    {sortedPosts.length > 10 && (
+      <div class="mt-8 text-center">
+        <button
+          id="load-more"
+          class="px-6 py-2.5 rounded bg-primary text-white text-sm font-medium hover:bg-accent transition-colors"
+        >
+          もっと見る
+        </button>
+      </div>
+    )}
 
     <div class="mt-8 text-center text-sm text-text-light">
       全 {sortedPosts.length} 件
     </div>
   </section>
+
+  <script>
+    const STEP = 10;
+    const items = Array.from(document.querySelectorAll<HTMLElement>('.post-item'));
+    const btn = document.getElementById('load-more');
+    let shown = STEP;
+    btn?.addEventListener('click', () => {
+      for (let i = shown; i < shown + STEP && i < items.length; i++) {
+        items[i].style.display = '';
+      }
+      shown += STEP;
+      if (shown >= items.length) btn.style.display = 'none';
+    });
+  </script>
 </BaseLayout>

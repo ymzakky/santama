@@ -19,6 +19,7 @@ interface Props {
   reporter?: string;
   reporterCompany?: string;
   reporterBusiness?: string;
+  thumbnail?: MicroCMSImage[];
 }
 
 const {
@@ -32,7 +33,11 @@ const {
   reporter,
   reporterCompany,
   reporterBusiness,
+  thumbnail,
 } = Astro.props;
+
+// 複数画像 (microCMS の「複数画像」フィールド = MicroCMSImage[])。空配列・未設定は表示しない。
+const gallery = (thumbnail ?? []).filter((img) => img && img.url);
 
 const url = Astro.url.href;
 const fiscalYear = getFiscalYear({ eventDate, publishedAt });
@@ -131,6 +136,35 @@ const hasReporterInfo = !!(reporter || reporterCompany || reporterBusiness);
     <!-- ===== 本文 (microCMSリッチエディタHTML) ===== -->
     <div class="prose post-body" set:html={body} />
 
+    <!-- ===== 画像ギャラリー (thumbnail / 複数画像) ===== -->
+    {gallery.length > 0 && (
+      <section class="mt-12 pt-8 border-t border-border">
+        <h2 class="text-lg font-bold text-accent mb-5 pl-3 border-l-4 border-orange">活動の様子</h2>
+        <ul class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {gallery.map((img) => (
+            <li>
+              <button
+                type="button"
+                class="gallery-item group block w-full overflow-hidden rounded-lg bg-bg-gray focus:outline-none focus:ring-2 focus:ring-primary"
+                data-full={img.url}
+                data-alt={img.alt ?? title}
+                aria-label="画像を拡大表示"
+              >
+                <img
+                  src={`${img.url}?fit=crop&w=480&h=360`}
+                  alt={img.alt ?? title}
+                  width="480"
+                  height="360"
+                  loading="lazy"
+                  class="aspect-[4/3] w-full object-cover transition-transform duration-200 group-hover:scale-105"
+                />
+              </button>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
     <!-- ===== SNSシェア ===== -->
     <div class="mt-12 pt-6 border-t border-border">
       <p class="text-sm font-bold text-accent mb-3 text-center">この内容をシェアする</p>
@@ -147,7 +181,74 @@ const hasReporterInfo = !!(reporter || reporterCompany || reporterBusiness);
       </a>
     </div>
   </article>
+
+  <!-- ===== 画像拡大モーダル ===== -->
+  {gallery.length > 0 && (
+    <div
+      id="image-modal"
+      class="hidden fixed inset-0 z-50 bg-black/80 items-center justify-center p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-label="画像の拡大表示"
+    >
+      <button
+        id="image-modal-close"
+        type="button"
+        class="absolute top-4 right-4 text-white/90 hover:text-white p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-white"
+        aria-label="閉じる"
+      >
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <img
+        id="image-modal-img"
+        src=""
+        alt=""
+        class="max-w-full max-h-[90vh] object-contain rounded shadow-lg"
+      />
+    </div>
+  )}
 </BaseLayout>
+
+<script>
+  // 画像ギャラリー: サムネイルをクリックすると元サイズの画像をモーダル表示
+  const modal = document.getElementById('image-modal');
+  const modalImg = document.getElementById('image-modal-img') as HTMLImageElement | null;
+  const closeBtn = document.getElementById('image-modal-close');
+
+  if (modal && modalImg) {
+    const open = (full: string, alt: string) => {
+      modalImg.src = full;
+      modalImg.alt = alt;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    };
+    const close = () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      modalImg.src = '';
+      document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll<HTMLButtonElement>('.gallery-item').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        open(btn.dataset.full ?? '', btn.dataset.alt ?? '');
+      });
+    });
+
+    closeBtn?.addEventListener('click', close);
+    // 背景(オーバーレイ)クリックで閉じる。画像自体のクリックは閉じない。
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) close();
+    });
+    // Esc キーで閉じる
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) close();
+    });
+  }
+</script>
 
 <style is:global>
   /* 記事本文の小見出し (microCMSで <h2>■講演概要</h2> のように書かれた箇所を装飾) */

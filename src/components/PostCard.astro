@@ -7,10 +7,11 @@ interface Props {
   category: string;
   year: number;
   publishedAt: string;
+  eventDate?: string;
   excerpt: string;
   eyecatch?: MicroCMSImage;
 }
-const { title, slug, category, year, publishedAt, excerpt, eyecatch } = Astro.props;
+const { title, slug, category, year, publishedAt, eventDate, excerpt, eyecatch } = Astro.props;
 import { withBase } from '../lib/path';
 import { formatDate } from '../lib/date';
 ---
@@ -34,7 +35,7 @@ import { formatDate } from '../lib/date';
   </a>
   <div class="p-5 flex flex-col flex-1">
     <div class="flex items-center gap-3 mb-2">
-      <time class="text-xs text-text-light">{formatDate(publishedAt)}</time>
+      <time class="text-xs text-text-light">{formatDate(eventDate || publishedAt)}</time>
       <span class="text-xs bg-primary-light text-primary px-2 py-0.5 rounded font-medium">
         {year}
       </span>

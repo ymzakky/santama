@@ -24,6 +24,9 @@ export interface Post {
   reporter?: string;           // 報告者名 例: "山田 太郎 氏"
   reporterCompany?: string;    // 報告者の所属企業 例: "(株)ボンズシップ"
   reporterBusiness?: string;   // 報告者の業種・事業内容 例: "訪問看護サービス事業"
+  // microCMS の「複数画像」フィールド。API は MicroCMSImage の配列 ([{url,width,height}, ...]) で返る。
+  // 参考: https://document.microcms.io/manual/image-field
+  thumbnail?: MicroCMSImage[]; // 記事下部のギャラリー表示用 (複数画像)
 }
 
 export interface Member {

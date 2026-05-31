@@ -253,7 +253,7 @@ const features = [
             </a>
             <div class="p-5 flex flex-col flex-1">
               <div class="flex items-center gap-3 mb-2">
-                <time class="text-xs text-text-light">{formatDate(post.publishedAt)}</time>
+                <time class="text-xs text-text-light">{formatDate(post.eventDate || post.publishedAt)}</time>
                 <span class="text-xs bg-primary-light text-primary px-2 py-0.5 rounded font-medium">
                   {getFiscalYear(post)}
                 </span>
