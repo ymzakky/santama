@@ -1,0 +1,227 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { withBase, resolveAssetUrl } from '../lib/path';
+import { formatDate } from '../lib/date';
+import type { MemberProfile } from '../lib/microcms';
+
+interface Props {
+  member: MemberProfile;
+}
+const { member } = Astro.props;
+
+const face = member.faceImage;
+const exterior = member.exteriorImage;
+const gallery = (member.gallery ?? []).filter((img) => img && img.url);
+const formattedInterviewDate = formatDate(member.interviewDate);
+
+// 基本情報（インタビュー様式の 1〜4 項目）
+const infoRows: { label: string; value: string }[] = [
+  { label: '業種・事業内容', value: member.business },
+  { label: '会社所在地', value: member.location },
+  { label: '同友会歴・入会', value: member.doyuHistory },
+];
+
+// 5〜7 のインタビュー本文セクション
+const sections: { heading: string; paragraphs: string[] }[] = [
+  { heading: '同友会入会のきっかけ', paragraphs: member.reason },
+  { heading: '入ってよかったこと・印象に残っていること', paragraphs: member.good },
+  { heading: '入会して自社の事業が変わったこと・影響', paragraphs: member.impact },
+];
+---
+
+<BaseLayout title={`${member.company}（${member.name}さん）｜会員紹介`}>
+  <Breadcrumb items={[
+    { label: '会員紹介', href: '/members/' },
+    { label: member.company },
+  ]} />
+
+  <article class="max-w-3xl mx-auto px-4 py-10 md:py-14">
+
+    <!-- ===== 業種ラベル + 記入日 ===== -->
+    <div class="flex items-center gap-3 mb-4">
+      <span class="text-xs bg-orange text-white px-3 py-1 rounded-full font-bold">
+        {member.business}
+      </span>
+      {formattedInterviewDate && (
+        <time class="text-sm text-text-light">{formattedInterviewDate} インタビュー</time>
+      )}
+    </div>
+
+    <!-- ===== 会社名 + 役職氏名 ===== -->
+    <h1 class="text-xl md:text-2xl font-bold leading-snug text-accent mb-2 pl-4 border-l-4 border-orange">
+      {member.company}
+    </h1>
+    <p class="text-base md:text-lg text-primary font-bold mb-8 pl-4">
+      {member.position}　{member.name}
+    </p>
+
+    <!-- ===== 顔写真 ＋ 事務所外観 ===== -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+      <!-- 顔写真 -->
+      <figure>
+        {face ? (
+          <img
+            src={resolveAssetUrl(face.url)}
+            alt={face.alt ?? `${member.company} ${member.name}さん`}
+            class="w-full aspect-[4/3] object-cover object-top rounded-lg shadow-sm"
+            loading="lazy"
+          />
+        ) : (
+          <div class="w-full aspect-[4/3] bg-bg-gray rounded-lg flex items-center justify-center text-border">
+            <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+          </div>
+        )}
+        <figcaption class="mt-2 text-center text-xs text-text-light">{member.name}さん</figcaption>
+      </figure>
+
+      <!-- 事務所外観 -->
+      <figure>
+        {exterior ? (
+          <img
+            src={resolveAssetUrl(exterior.url)}
+            alt={exterior.alt ?? `${member.company} 事務所外観`}
+            class="w-full aspect-[4/3] object-cover rounded-lg shadow-sm"
+            loading="lazy"
+          />
+        ) : (
+          <div class="w-full aspect-[4/3] bg-bg-gray rounded-lg flex flex-col items-center justify-center text-text-light gap-2">
+            <svg class="w-12 h-12 text-border" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01" />
+            </svg>
+            <span class="text-xs">事務所外観写真は準備中です</span>
+          </div>
+        )}
+        <figcaption class="mt-2 text-center text-xs text-text-light">事務所外観</figcaption>
+      </figure>
+    </div>
+
+    <!-- ===== 基本情報ボックス ===== -->
+    <div class="bg-bg-gray border-l-4 border-primary rounded-r p-5 mb-10">
+      <dl class="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-x-4 gap-y-2 text-sm">
+        {infoRows.map((row) => (
+          <>
+            <dt class="font-bold text-accent">{row.label}</dt>
+            <dd class="text-text">{row.value}</dd>
+          </>
+        ))}
+      </dl>
+    </div>
+
+    <!-- ===== インタビュー本文 (5〜7) ===== -->
+    {sections.map((section) => (
+      <section class="mb-10">
+        <h2 class="text-lg font-bold text-accent mb-4 pl-3 border-l-4 border-orange">
+          {section.heading}
+        </h2>
+        {section.paragraphs.map((p) => (
+          <p class="text-text leading-loose mb-4 whitespace-pre-line">{p}</p>
+        ))}
+      </section>
+    ))}
+
+    <!-- ===== 写真ギャラリー（あれば） ===== -->
+    {gallery.length > 0 && (
+      <section class="mt-12 pt-8 border-t border-border">
+        <h2 class="text-lg font-bold text-accent mb-5 pl-3 border-l-4 border-orange">写真</h2>
+        <ul class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {gallery.map((img) => (
+            <li>
+              <button
+                type="button"
+                class="gallery-item group block w-full overflow-hidden rounded-lg bg-bg-gray focus:outline-none focus:ring-2 focus:ring-primary"
+                data-full={resolveAssetUrl(img.url)}
+                data-alt={img.alt ?? member.company}
+                aria-label="画像を拡大表示"
+              >
+                <img
+                  src={resolveAssetUrl(img.url)}
+                  alt={img.alt ?? member.company}
+                  loading="lazy"
+                  class="aspect-[4/3] w-full object-cover transition-transform duration-200 group-hover:scale-105"
+                />
+              </button>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <!-- ===== 一覧に戻る ===== -->
+    <div class="mt-12 pt-6 border-t border-border text-center">
+      <a href={withBase('/members/')} class="inline-flex items-center gap-2 px-6 py-3 border-2 border-primary text-primary font-bold rounded hover:bg-primary hover:text-white transition-colors text-sm">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        会員紹介の一覧に戻る
+      </a>
+    </div>
+  </article>
+
+  <!-- ===== 画像拡大モーダル ===== -->
+  {gallery.length > 0 && (
+    <div
+      id="image-modal"
+      class="hidden fixed inset-0 z-50 bg-black/80 items-center justify-center p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-label="画像の拡大表示"
+    >
+      <button
+        id="image-modal-close"
+        type="button"
+        class="absolute top-4 right-4 text-white/90 hover:text-white p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-white"
+        aria-label="閉じる"
+      >
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <img
+        id="image-modal-img"
+        src=""
+        alt=""
+        class="max-w-full max-h-[90vh] object-contain rounded shadow-lg"
+      />
+    </div>
+  )}
+</BaseLayout>
+
+<script>
+  // 画像ギャラリー: サムネイルをクリックすると元サイズの画像をモーダル表示
+  const modal = document.getElementById('image-modal');
+  const modalImg = document.getElementById('image-modal-img') as HTMLImageElement | null;
+  const closeBtn = document.getElementById('image-modal-close');
+
+  if (modal && modalImg) {
+    const open = (full: string, alt: string) => {
+      modalImg.src = full;
+      modalImg.alt = alt;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    };
+    const close = () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      modalImg.src = '';
+      document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll<HTMLButtonElement>('.gallery-item').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        open(btn.dataset.full ?? '', btn.dataset.alt ?? '');
+      });
+    });
+
+    closeBtn?.addEventListener('click', close);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) close();
+    });
+  }
+</script>

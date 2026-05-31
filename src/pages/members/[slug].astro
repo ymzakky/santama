@@ -1,0 +1,21 @@
+---
+import MemberProfileLayout from '../../layouts/MemberProfileLayout.astro';
+import { getAllMemberProfiles } from '../../lib/microcms';
+import type { MemberProfile } from '../../lib/microcms';
+
+export async function getStaticPaths() {
+  const members = await getAllMemberProfiles();
+  return members.map((member) => ({
+    params: { slug: member.slug },
+    props: { member },
+  }));
+}
+
+interface Props {
+  member: MemberProfile;
+}
+
+const { member } = Astro.props;
+---
+
+<MemberProfileLayout member={member} />
