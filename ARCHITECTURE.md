@@ -52,7 +52,7 @@ MICROCMS_API_KEY=（APIキー）
 | エンドポイント | 用途 | 取得関数（`src/lib/microcms.ts`） | 使っているページ |
 | --- | --- | --- | --- |
 | `news` | 活動状況報告（記事） | `getAllPosts` / `getLatestPosts` / `getPostsByFiscalYear` / `getFiscalYears` | トップ、`/posts/`、`/category/[年度]/`、記事詳細 |
-| `members` | 会員企業一覧 | `getAllMembers` | `/list/` |
+| `member-profiles`（将来） | 会員紹介（経営者インタビュー） | `getAllMemberProfiles` / `getMemberProfile(slug)` | `/members/`、`/members/[slug]/` |
 | `pages` | 固定ページ本文 | `getPage(slug)` | ※ ヘルパーは用意済みだが**現状どのページからも未使用**（将来用） |
 
 #### `news`（記事）の主なフィールド
@@ -73,9 +73,19 @@ MICROCMS_API_KEY=（APIキー）
 | `reporter?` / `reporterCompany?` / `reporterBusiness?` | テキスト | 報告者・所属企業・事業内容（あれば報告者ボックス表示） |
 | `thumbnail?` | 複数画像 | 記事下部のギャラリー（`MicroCMSImage[]`）。参考: image-field のドキュメント |
 
-#### `members`（会員）のフィールド
+#### 会員紹介（`MemberProfile`）のフィールド
 
-`id` / `name` / `company` / `description` / `url` / `address`
+経営者インタビュー記事。**現状は静的データ [`src/data/members.ts`](src/data/members.ts) で運用**し、
+取得は [`src/lib/microcms.ts`](src/lib/microcms.ts) の `getAllMemberProfiles` / `getMemberProfile(slug)` 経由。
+将来 microCMS に `member-profiles` エンドポイントを作ったら、その2関数を API 呼び出しに差し替えるだけで移行できる。
+
+`id` / `slug` / `company`（会社名） / `name`（氏名） / `position?`（役職） / `business`（業種・事業内容） /
+`location`（会社所在地） / `doyuHistory`（同友会歴・入会） / `reason[]`（入会のきっかけ） /
+`good[]`（入ってよかったこと） / `impact[]`（入会で変わったこと） / `interviewDate?` / `interviewer?` /
+`faceImage?`（顔写真） / `exteriorImage?`（事務所外観） / `gallery?`（その他写真）
+
+画像は `ProfileImage`（`{ url, width?, height?, alt? }` = MicroCMSImage 互換）。静的運用では `url` に
+ローカル公開パス（`/images/members/...`）を入れ、表示時に [`resolveAssetUrl`](src/lib/path.ts) で base を付与する。
 
 ---
 
@@ -136,7 +146,8 @@ Astro はファイルパスがそのまま URL になります。`[...]` は動�
 | `tokyo-doyu.astro` | `/tokyo-doyu/` | 東京中小企業家同友会 |
 | `welcome.astro` | `/welcome/` | 入会案内 |
 | `privacy.astro` | `/privacy/` | プライバシーポリシー |
-| `list.astro` | `/list/` | 会員一覧（`members`） |
+| `members/index.astro` | `/members/` | 会員紹介の一覧（`MemberProfile` のカード） |
+| `members/[slug].astro` | `/members/<slug>/` | 会員紹介の詳細（経営者インタビュー） |
 | `posts/index.astro` | `/posts/` | 活動状況の全記事一覧（年度フィルタ付き） |
 | `category/[category].astro` | `/category/<年度>/` | **年度別**の記事一覧（例 `/category/2023/`） |
 | `[category]/[slug].astro` | `/<category>/<slug>/` | **記事詳細**（category は通常 `report` → `/report/<slug>/`） |

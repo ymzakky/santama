@@ -1,5 +1,6 @@
 import { createClient } from 'microcms-js-sdk';
 import type { MicroCMSImage, MicroCMSListResponse } from 'microcms-js-sdk';
+import { memberProfilesStatic } from '../data/members';
 
 // microCMS client
 const client = createClient({
@@ -29,13 +30,36 @@ export interface Post {
   thumbnail?: MicroCMSImage[]; // 記事下部のギャラリー表示用 (複数画像)
 }
 
-export interface Member {
+// 会員紹介（インタビュー記事）。広報部のインタビュー様式に対応する。
+// 現状は静的データ (src/data/members.ts) で運用し、将来 microCMS の
+// `member-profiles` エンドポイントへ移行する想定（getAllMemberProfiles 参照）。
+export interface MemberProfile {
   id: string;
-  name: string;
-  company: string;
-  description: string;
+  slug: string;          // URL 末尾（/members/<slug>/）
+  company: string;       // 会社名
+  name: string;          // 氏名
+  position?: string;     // 役職（例: 代表取締役）
+  business: string;      // 業種・事業内容
+  location: string;      // 会社所在地 又はお住まい
+  doyuHistory: string;   // 同友会歴 / 入会年月（例: "12年目（2018-2021年 支部長）"）
+  reason: string[];      // 5. 同友会入会のきっかけ（段落配列）
+  good: string[];        // 6. 入ってよかったこと・印象に残っていること
+  impact: string[];      // 7. 入会で自社の事業が変わったこと・影響
+  interviewDate?: string;// インタビュー記入日（ISO 文字列）
+  interviewer?: string;  // 担当（広報部）
+  // 画像は microCMS 移行を見据え MicroCMSImage 互換の形で持つ。
+  // 静的運用では url にローカル公開パス（例: /images/members/xxx-face.jpg）を入れる。
+  faceImage?: ProfileImage;     // 顔写真
+  exteriorImage?: ProfileImage; // 会社事務所の外観
+  gallery?: ProfileImage[];     // その他の写真
+}
+
+// MicroCMSImage 互換の画像参照（url は絶対 URL でもローカルパスでも可）。
+export interface ProfileImage {
   url: string;
-  address: string;
+  width?: number;
+  height?: number;
+  alt?: string;
 }
 
 export interface Page {
@@ -73,7 +97,7 @@ export const navItems = [
   { label: '経営者の気づきとまなび', href: '/event/' },
   { label: '経営者支援サービス', href: '/our-services/' },
   { label: '最新活動状況', href: '/posts/' },
-  { label: '会員一覧', href: '/list/' },
+  { label: '会員紹介', href: '/members/' },
   { label: '東京中小企業家同友会', href: '/tokyo-doyu/' },
 ];
 
@@ -136,12 +160,25 @@ export async function getLatestPosts(count: number): Promise<Post[]> {
   return all.slice(0, count);
 }
 
-export async function getAllMembers(): Promise<Member[]> {
-  const res = await client.getList<Member>({
-    endpoint: 'members',
-    queries: { limit: 100 },
-  });
-  return res.contents;
+// 会員紹介の取得。
+// 【現状】静的データ (src/data/members.ts) を返す。
+// 【将来】microCMS に `member-profiles` エンドポイントを用意したら、下記コメントの
+//        実装に差し替えるだけで移行できる（画像は MicroCMSImage が ProfileImage 互換）。
+//
+//   export async function getAllMemberProfiles(): Promise<MemberProfile[]> {
+//     const res = await client.getList<MemberProfile>({
+//       endpoint: 'member-profiles',
+//       queries: { limit: 100 },
+//     });
+//     return res.contents;
+//   }
+export async function getAllMemberProfiles(): Promise<MemberProfile[]> {
+  return memberProfilesStatic;
+}
+
+export async function getMemberProfile(slug: string): Promise<MemberProfile | undefined> {
+  const all = await getAllMemberProfiles();
+  return all.find((m) => m.slug === slug);
 }
 
 export async function getPage(slug: string): Promise<Page | undefined> {

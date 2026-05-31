@@ -1,7 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
-import ShareButtons from '../components/ShareButtons.astro';
 import { getFiscalYear } from '../lib/microcms';
 import { withBase } from '../lib/path';
 import { formatDate } from '../lib/date';
@@ -39,7 +38,6 @@ const {
 // 複数画像 (microCMS の「複数画像」フィールド = MicroCMSImage[])。空配列・未設定は表示しない。
 const gallery = (thumbnail ?? []).filter((img) => img && img.url);
 
-const url = Astro.url.href;
 const fiscalYear = getFiscalYear({ eventDate, publishedAt });
 const formattedPublishedAt = formatDate(publishedAt);
 const formattedEventDate = formatDate(eventDate);
@@ -165,14 +163,8 @@ const hasReporterInfo = !!(reporter || reporterCompany || reporterBusiness);
       </section>
     )}
 
-    <!-- ===== SNSシェア ===== -->
-    <div class="mt-12 pt-6 border-t border-border">
-      <p class="text-sm font-bold text-accent mb-3 text-center">この内容をシェアする</p>
-      <ShareButtons url={url} title={title} />
-    </div>
-
     <!-- ===== 一覧に戻る ===== -->
-    <div class="mt-10 text-center">
+    <div class="mt-12 pt-6 border-t border-border text-center">
       <a href={withBase('/posts/')} class="inline-flex items-center gap-2 px-6 py-3 border-2 border-primary text-primary font-bold rounded hover:bg-primary hover:text-white transition-colors text-sm">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
