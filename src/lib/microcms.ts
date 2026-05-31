@@ -46,27 +46,23 @@ export interface Page {
 
 // ---------- Static data ----------
 
-export const categoryLabels: Record<string, string> = {
-  news2022: '2022',
-  news2023: '2023',
-  news2024: '2024',
-  news2025: '2025',
-  news2026: '2026',
-};
+// ---------- Category / fiscal year ----------
 
-export const categoryFullLabels: Record<string, string> = {
-  news2022: '2022年度のお知らせ',
-  news2023: '2023年度のお知らせ',
-  news2024: '2024年度のお知らせ',
-  news2025: '2025年度のお知らせ',
-  news2026: '2026年度のお知らせ',
-};
+// 記事カテゴリは microCMS 上では一律 "report"。
+// 年度区分は開催日 (eventDate / 無ければ publishedAt) から算出する。
+// 年度は 5月～翌4月（年度末は4月）。例: 2024-03 開催の例会は「2023年度」。
 
-export function getCategoryLabel(category: string): string {
-  return categoryFullLabels[category] || category;
+export function getFiscalYear(post: { eventDate?: string; publishedAt: string }): number {
+  const iso = post.eventDate || post.publishedAt;
+  const d = new Date(iso);
+  const year = d.getFullYear();
+  const month = d.getMonth() + 1; // 1-12
+  return month <= 4 ? year - 1 : year;
 }
 
-export const categories = ['news2026', 'news2025', 'news2024', 'news2023', 'news2022'];
+export function getFiscalYearLabel(year: number | string): string {
+  return `${year}年度のお知らせ`;
+}
 
 export const navItems = [
   { label: 'Top', href: '/' },
@@ -86,25 +82,27 @@ export const footerNavItems = [
 
 // ---------- Helpers ----------
 
-/**
- * Normalize the category value from microCMS.
- * Select fields may return an array like ["2025"] or a string like "2025".
- * We normalize to the "news2025" format used in our routing.
- */
+// 記事カテゴリの既定値（microCMS 上の選択肢）。
+export const DEFAULT_CATEGORY = 'report';
+
+// microCMS のセレクトフィールドは配列 (例: ["report"]) で返るため文字列へ正規化する。
+// 未設定の場合は既定カテゴリ "report" にフォールバックする。
 function normalizeCategory(raw: unknown): string {
-  let val = Array.isArray(raw) ? raw[0] : raw;
-  if (typeof val !== 'string') val = String(val);
-  // If the value is already in "newsXXXX" format, return as-is
-  if (val.startsWith('news')) return val;
-  // Otherwise, prefix with "news"
-  return `news${val}`;
+  const val = Array.isArray(raw) ? raw[0] : raw;
+  return typeof val === 'string' && val ? val : DEFAULT_CATEGORY;
 }
 
-function normalizePost(post: any): Post {
-  return {
-    ...post,
-    category: normalizeCategory(post.category),
-  };
+function normalizePost(post: Post): Post {
+  return { ...post, category: normalizeCategory(post.category) };
+}
+
+function eventTime(post: Post): number {
+  return new Date(post.eventDate || post.publishedAt).getTime();
+}
+
+// 開催日 (eventDate / 無ければ publishedAt) の新しい順に並べ替える。
+function sortByEventDateDesc(posts: Post[]): Post[] {
+  return [...posts].sort((a, b) => eventTime(b) - eventTime(a));
 }
 
 // ---------- API functions ----------
@@ -112,33 +110,27 @@ function normalizePost(post: any): Post {
 export async function getAllPosts(): Promise<Post[]> {
   const res = await client.getList<Post>({
     endpoint: 'news',
-    queries: { limit: 100, orders: '-publishedAt' },
+    queries: { limit: 100 },
   });
-  return res.contents.map(normalizePost);
+  return sortByEventDateDesc(res.contents.map(normalizePost));
 }
 
-export async function getPostsByCategory(category: string): Promise<Post[]> {
-  // Strip "news" prefix for microCMS filter if the stored value doesn't have it
-  const filterValue = category.startsWith('news') ? category.replace('news', '') : category;
+// 指定した年度（開催日基準）の記事のみを返す。
+export async function getPostsByFiscalYear(year: number): Promise<Post[]> {
+  const all = await getAllPosts();
+  return all.filter((post) => getFiscalYear(post) === year);
+}
 
-  // Try both formats to handle however the data is stored
-  const res = await client.getList<Post>({
-    endpoint: 'news',
-    queries: {
-      limit: 100,
-      filters: `category[contains]${filterValue}`,
-      orders: '-publishedAt',
-    },
-  });
-  return res.contents.map(normalizePost);
+// 記事が存在する年度の一覧を新しい順で返す。
+export async function getFiscalYears(): Promise<number[]> {
+  const all = await getAllPosts();
+  const years = [...new Set(all.map(getFiscalYear))];
+  return years.sort((a, b) => b - a);
 }
 
 export async function getLatestPosts(count: number): Promise<Post[]> {
-  const res = await client.getList<Post>({
-    endpoint: 'news',
-    queries: { limit: count, orders: '-publishedAt' },
-  });
-  return res.contents.map(normalizePost);
+  const all = await getAllPosts();
+  return all.slice(0, count);
 }
 
 export async function getAllMembers(): Promise<Member[]> {

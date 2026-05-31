@@ -7,11 +7,11 @@ import CTASection from '../components/CTASection.astro';
 import { withBase } from '../lib/path';
 ---
 
-<BaseLayout title="イベント" description="東京中小企業家同友会 三多摩支部の例会、合宿研修、懇親会、外部団体交流などのイベント情報をご紹介します。">
+<BaseLayout title="経営者の気づきとまなび" description="東京中小企業家同友会 三多摩支部の例会、合宿研修、懇親会、外部団体交流などのイベント情報をご紹介します。">
 
-  <Breadcrumb items={[{ label: 'イベント' }]} />
+  <Breadcrumb items={[{ label: '経営者の気づきとまなび' }]} />
 
-  <HeroSection title="イベント" subtitle='経営を学び、仲間とつながる<br class="hidden md:inline" />多彩なイベントを開催しています。' />
+  <HeroSection title="経営者の気づきとまなび" subtitle='経営を学び、仲間とつながる<br class="hidden md:inline" />多彩なイベントを開催しています。' />
 
   <!-- ========== 例会 ========== -->
   <section class="py-16 md:py-20 bg-white">
@@ -42,8 +42,8 @@ import { withBase } from '../lib/path';
               {([
                 ['開催日', '毎月第3木曜日（原則）'],
                 ['時間', '18:30〜21:00'],
-                ['会場', '立川市内の会議室<br />（変更になる場合があります）'],
-                ['参加費', '会員：無料<br />ゲスト：1,000円'],
+                ['会場', '立川駅近くの会議室<br />（変更になる場合があります）'],
+                ['参加費', '2,000円'],
                 ['内容', '経営体験報告（40分）<br />グループ討論（60分）<br />まとめ・交流（20分）'],
               ] as const).map(([label, value]) => (
                 <div class="flex gap-3">

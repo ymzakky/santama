@@ -2,7 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import ShareButtons from '../components/ShareButtons.astro';
-import { categoryLabels } from '../lib/microcms';
+import { getFiscalYear } from '../lib/microcms';
 import { withBase } from '../lib/path';
 import { formatDate } from '../lib/date';
 import type { MicroCMSImage } from 'microcms-js-sdk';
@@ -24,7 +24,6 @@ interface Props {
 const {
   title,
   publishedAt,
-  category,
   body,
   excerpt,
   eyecatch,
@@ -36,6 +35,7 @@ const {
 } = Astro.props;
 
 const url = Astro.url.href;
+const fiscalYear = getFiscalYear({ eventDate, publishedAt });
 const formattedPublishedAt = formatDate(publishedAt);
 const formattedEventDate = formatDate(eventDate);
 const hasReporterInfo = !!(reporter || reporterCompany || reporterBusiness);
@@ -52,7 +52,7 @@ const hasReporterInfo = !!(reporter || reporterCompany || reporterBusiness);
     <!-- ===== カテゴリラベル + 日付 ===== -->
     <div class="flex items-center gap-3 mb-4">
       <span class="text-xs bg-orange text-white px-3 py-1 rounded-full font-bold">
-        {categoryLabels[category] || category}
+        {fiscalYear}年度
       </span>
       <time class="text-sm text-text-light">{formattedPublishedAt}</time>
     </div>

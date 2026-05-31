@@ -1,16 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+import HeroSection from '../components/HeroSection.astro';
 import { withBase } from '../lib/path';
 ---
 
 <BaseLayout title="プライバシーポリシー" description="東京中小企業家同友会 三多摩支部のプライバシーポリシーです。">
   <Breadcrumb items={[{ label: 'プライバシーポリシー' }]} />
 
+  <HeroSection title="プライバシーポリシー" />
+
   <section class="py-12 md:py-16">
     <div class="max-w-3xl mx-auto px-4">
-      <h1 class="text-3xl font-bold text-primary-dark mb-8 md:text-4xl">プライバシーポリシー</h1>
-
       <div class="prose">
         <p>東京中小企業家同友会 三多摩支部（以下「当支部」）は、個人情報の保護に関する法令等を遵守し、以下のとおり個人情報保護方針を定め、適切な取り扱いに努めます。</p>
 

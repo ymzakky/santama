@@ -2,27 +2,29 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import PostCard from '../../components/PostCard.astro';
-import { getAllPosts, categories, getCategoryLabel } from '../../lib/microcms';
+import HeroSection from '../../components/HeroSection.astro';
+import { getAllPosts, getFiscalYear, getFiscalYears } from '../../lib/microcms';
 import { withBase } from '../../lib/path';
 
 const sortedPosts = await getAllPosts();
+const years = await getFiscalYears();
 
 const categoryFilters = [
   { label: '全て', href: '/posts/', key: 'all' },
-  ...categories.map((cat) => ({
-    label: getCategoryLabel(cat).replace('年度のお知らせ', ''),
-    href: `/category/${cat}/`,
-    key: cat,
+  ...years.map((year) => ({
+    label: String(year),
+    href: `/category/${year}/`,
+    key: String(year),
   })),
 ];
 ---
 
-<BaseLayout title="経営者の気づきとまなび">
-  <Breadcrumb items={[{ label: '経営者の気づきとまなび' }]} />
+<BaseLayout title="最新活動状況">
+  <Breadcrumb items={[{ label: '最新活動状況' }]} />
+
+  <HeroSection title="最新活動状況" />
 
   <section class="max-w-5xl mx-auto px-4 py-10">
-    <h1 class="text-2xl md:text-3xl font-bold mb-8">経営者の気づきとまなび</h1>
-
     <div class="flex flex-wrap gap-2 mb-8">
       {categoryFilters.map((filter) => (
         <a
@@ -45,6 +47,7 @@ const categoryFilters = [
           title={post.title}
           slug={post.slug}
           category={post.category}
+          year={getFiscalYear(post)}
           publishedAt={post.publishedAt}
           excerpt={post.excerpt}
           eyecatch={post.eyecatch}

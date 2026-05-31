@@ -5,12 +5,12 @@ interface Props {
   title: string;
   slug: string;
   category: string;
+  year: number;
   publishedAt: string;
   excerpt: string;
   eyecatch?: MicroCMSImage;
 }
-const { title, slug, category, publishedAt, excerpt, eyecatch } = Astro.props;
-import { categoryLabels } from '../lib/microcms';
+const { title, slug, category, year, publishedAt, excerpt, eyecatch } = Astro.props;
 import { withBase } from '../lib/path';
 import { formatDate } from '../lib/date';
 ---
@@ -36,7 +36,7 @@ import { formatDate } from '../lib/date';
     <div class="flex items-center gap-3 mb-2">
       <time class="text-xs text-text-light">{formatDate(publishedAt)}</time>
       <span class="text-xs bg-primary-light text-primary px-2 py-0.5 rounded font-medium">
-        {categoryLabels[category] || category}
+        {year}
       </span>
     </div>
     <h3 class="font-bold text-text mb-2 line-clamp-2">

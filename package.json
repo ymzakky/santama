@@ -12,5 +12,9 @@
     "astro": "^6.1.4",
     "microcms-js-sdk": "^3.3.0",
     "tailwindcss": "^4.2.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "typescript": "^5.9.3"
   }
 }
